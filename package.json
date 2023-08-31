@@ -12,7 +12,9 @@
         "precommit": "pnpm lint && pnpm prettier",
         "prepush": "pnpm build",
         "lint": "eslint --ext .js,.astro src",
-        "prettier": "prettier --write . --plugin=prettier-plugin-astro"
+        "prettier": "prettier --write . --plugin=prettier-plugin-astro",
+        "typecheck": "tsc --noEmit",
+        "test": "npx cypress run"
     },
     "engines": {
         "npm": "please-use-pnpm",
@@ -33,6 +35,7 @@
         "@commitlint/cli": "17.7.1",
         "@commitlint/config-conventional": "16.2.1",
         "@typescript-eslint/parser": "^6.5.0",
+        "cypress": "^13.0.0",
         "eslint": "^8.47.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^17.0.0",
@@ -41,7 +44,7 @@
         "eslint-plugin-import": "^2.27.5",
         "eslint-plugin-prettier": "5.0.0",
         "eslint-plugin-unicorn": "^46.0.0",
-        "husky": "^8.0.3",
+        "husky": "^8.0.0",
         "prettier": "^3.0.3",
         "prettier-plugin-astro": "^0.12.0",
         "typescript": "^5.1.6"
