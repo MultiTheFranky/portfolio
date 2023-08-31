@@ -1,20 +1,68 @@
 {
-  "name": "portfolio",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/react": "^3.0.0",
-    "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7",
-    "astro": "^3.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+    "name": "portfolio",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev --host",
+        "start": "astro dev --host",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "prepare": "husky install",
+        "precommit": "pnpm lint && pnpm prettier",
+        "prepush": "pnpm build",
+        "lint": "eslint --ext .js,.astro src",
+        "prettier": "prettier --write . --plugin=prettier-plugin-astro",
+        "typecheck": "tsc --noEmit",
+        "cy:run": "cypress run",
+        "test:e2e": "start-server-and-test start http://localhost:4321 cy:run",
+        "test": "concurrently \"pnpm typecheck\" \"pnpm lint\" \"pnpm test:e2e\" -n \"Typecheck,Lint,Cypress\""
+    },
+    "engines": {
+        "npm": "please-use-pnpm",
+        "node": ">=18",
+        "pnpm": ">=8",
+        "yarn": "please-use-pnpm"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "dependencies": {
+        "@astrojs/cloudflare": "^7.0.0",
+        "@astrojs/react": "^3.0.0",
+        "@types/react": "^18.2.21",
+        "@types/react-dom": "^18.2.7",
+        "astro": "^3.0.4",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "17.7.1",
+        "@commitlint/config-conventional": "16.2.1",
+        "@typescript-eslint/parser": "^6.5.0",
+        "concurrently": "^8.2.1",
+        "cypress": "^13.0.0",
+        "eslint": "^8.47.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-airbnb-typescript": "^17.0.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-astro": "^0.29.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-prettier": "5.0.0",
+        "eslint-plugin-unicorn": "^46.0.0",
+        "husky": "^8.0.0",
+        "prettier": "^3.0.3",
+        "prettier-plugin-astro": "^0.12.0",
+        "start-server-and-test": "^2.0.0",
+        "typescript": "^5.1.6"
+    }
 }
