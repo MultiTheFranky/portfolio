@@ -47,7 +47,7 @@
     },
     "devDependencies": {
         "@commitlint/cli": "17.7.1",
-        "@commitlint/config-conventional": "16.2.1",
+        "@commitlint/config-conventional": "17.7.0",
         "@typescript-eslint/parser": "^6.5.0",
         "concurrently": "^8.2.1",
         "cypress": "^13.0.0",
