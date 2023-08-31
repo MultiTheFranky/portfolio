@@ -14,13 +14,27 @@
         "lint": "eslint --ext .js,.astro src",
         "prettier": "prettier --write . --plugin=prettier-plugin-astro",
         "typecheck": "tsc --noEmit",
-        "test": "concurrently \"pnpm typecheck\" \"pnpm lint\" \"pnpm start\" \"cypress run && npx kill-port 4321\" -s !command-Web -n \"Typecheck,Lint,Web,Cypress\""
+        "cy:run": "cypress run",
+        "test:e2e": "start-server-and-test start http://localhost:4321 cy:run",
+        "test": "concurrently \"pnpm typecheck\" \"pnpm lint\" \"pnpm test:e2e\" -n \"Typecheck,Lint,Cypress\""
     },
     "engines": {
         "npm": "please-use-pnpm",
         "node": ">=18",
         "pnpm": ">=8",
         "yarn": "please-use-pnpm"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     },
     "dependencies": {
         "@astrojs/cloudflare": "^7.0.0",
@@ -48,7 +62,7 @@
         "husky": "^8.0.0",
         "prettier": "^3.0.3",
         "prettier-plugin-astro": "^0.12.0",
-        "typescript": "^5.1.6",
-        "wait-on": "^7.0.1"
+        "start-server-and-test": "^2.0.0",
+        "typescript": "^5.1.6"
     }
 }
