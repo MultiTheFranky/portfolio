@@ -1,16 +1,9 @@
-# Astro Starter Kit: Basics
+# MultiTheFranky
 
-```
-npm create astro@latest -- --template basics
-```
+Production: [https://multithefranky.com](https://multithefranky.com)
+Development: [https://dev.multithefranky.com](https://dev.multithefranky.com)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+Usage of [Astro](https://astro.build) and [React](https://reactjs.org) to create my personal website.
 
 ## 🚀 Project Structure
 
@@ -42,13 +35,21 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm install`            | Installs dependencies                            |
+| `pnpm dev`                | Starts the development server                    |
+| `pnpm build`              | Builds your project for production               |
+| `pnpm test`               | Runs your test suite                             |
+| `pnpm prettier`           | Formats your code                                |
+| `pnpm lint`               | Lints your code                                  |
 
-## 👀 Want to learn more?
+## 🐕 Husky
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This project uses [Husky](https://typicode.github.io/husky/#/) to run commands before committing and pushing.
+
+## 📦 Dependencies
+
+This project uses [pnpm](https://pnpm.io) to manage dependencies.
+
+## 📝 License
+
+This project is licensed under the [MIT License](./LICENSE).
