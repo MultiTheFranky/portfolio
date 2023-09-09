@@ -1,7 +1,6 @@
 # MultiTheFranky
 
 Production: [https://multithefranky.com](https://multithefranky.com)
-Development: [https://dev.multithefranky.com](https://dev.multithefranky.com)
 
 Usage of [Astro](https://astro.build) and [React](https://reactjs.org) to create my personal website.
 
