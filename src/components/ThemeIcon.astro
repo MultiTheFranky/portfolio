@@ -67,9 +67,10 @@
             localStorage.setItem("theme", isDark ? "dark" : "light");
         };
 
-        document
-            .getElementById("themeToggle")!
-            .addEventListener("click", handleToggleClick);
+        const toggle = document.getElementById("themeToggle");
+        if (toggle) {
+            toggle.addEventListener("click", handleToggleClick);
+        }
     }
     // Runs on initial navigation
     setDarkMode();
