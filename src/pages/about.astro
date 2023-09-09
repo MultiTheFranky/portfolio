@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<style>
+    .text-gradient {
+        background: linear-gradient(270deg, #fff, #00b1bb, #0d0950);
+        background-size: 600% 600%;
+
+        -webkit-animation: Title 30s ease infinite;
+        -moz-animation: Title 30s ease infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: Title 30s ease infinite;
+        background-size: 400%;
+        background-position: 0%;
+    }
+
+    @-webkit-keyframes Title {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    @-moz-keyframes Title {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    @keyframes Title {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+</style>
+<Layout title="About">
+    <main class="grid h-full place-items-center px-12 py-24 sm:py-32 lg:px-8">
+        <div class="max-w-sm w-full lg:max-w-full lg:flex">
+            <div
+                class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                style="background-image: url('/about.png')"
+                title="MultiTheFranky"
+            >
+            </div>
+            <div
+                class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+            >
+                <div class="mb-8">
+                    <div class="text-gray-900 font-bold text-xl mb-2">
+                        <p class="inline">Francisco&nbsp;</p>
+                        <span class="inline text-gradient">Franky</span><p
+                            class="inline"
+                        >
+                            Álamo García
+                        </p>
+                    </div>
+                    <p class="text-gray-700 text-base">
+                        Born in Santander, Spain, in 1997. I am a computer
+                        science student at the University of Cantabria. I am
+                        passionate about technology and I love to learn new
+                        things. I am a very curious person and I like to know
+                        about everything. Working for Incentro. Grandvision
+                        support team and Casashops support and developer.
+                    </p>
+                    <p class="text-gray-700 text-base mt-8">
+                        "Master of none, jack of all trades"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>

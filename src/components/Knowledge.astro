@@ -1,0 +1,205 @@
+---
+type Knowledge = {
+    name: string;
+    icon: string;
+    link: string;
+};
+type MainKnowledge = {
+    name: string;
+    knowledge: Knowledge[];
+};
+const frontendKnowledge: Knowledge[] = [
+    {
+        name: "React",
+        icon: "https://cdn.svgporn.com/logos/react.svg",
+        link: "https://reactjs.org/"
+    },
+    {
+        name: "Astro",
+        icon: "https://cdn.svgporn.com/logos/astro-icon.svg",
+        link: "https://astro.build/"
+    },
+    {
+        name: "NextJS",
+        icon: "https://cdn.svgporn.com/logos/nextjs-icon.svg",
+        link: "https://nextjs.org/"
+    },
+    {
+        name: "TailwindCSS",
+        icon: "https://cdn.svgporn.com/logos/tailwindcss-icon.svg",
+        link: "https://tailwindcss.com/"
+    },
+    {
+        name: "Sass",
+        icon: "https://cdn.svgporn.com/logos/sass.svg",
+        link: "https://sass-lang.com/"
+    },
+    {
+        name: "TypeScript",
+        icon: "https://cdn.svgporn.com/logos/typescript-icon.svg",
+        link: "https://www.typescriptlang.org/"
+    },
+    {
+        name: "JavaScript",
+        icon: "https://cdn.svgporn.com/logos/javascript.svg",
+        link: "https://www.javascript.com/"
+    },
+    {
+        name: "HTML",
+        icon: "https://cdn.svgporn.com/logos/html-5.svg",
+        link: "https://developer.mozilla.org/en-US/docs/Web/HTML"
+    },
+    {
+        name: "CSS",
+        icon: "https://cdn.svgporn.com/logos/css-3.svg",
+        link: "https://developer.mozilla.org/en-US/docs/Web/CSS"
+    }
+];
+
+const mainFrontendKnowledge = {
+    name: "Frontend",
+    knowledge: frontendKnowledge
+};
+
+const backendKnowledge: Knowledge[] = [
+    {
+        name: "NodeJS",
+        icon: "https://cdn.svgporn.com/logos/nodejs-icon.svg",
+        link: "https://nodejs.org/en/"
+    },
+    {
+        name: "Express",
+        icon: "https://adware-technologies.s3.amazonaws.com/uploads/technology/thumbnail/20/express-js.png",
+        link: "https://expressjs.com/"
+    },
+    {
+        name: "MongoDB",
+        icon: "https://cdn.svgporn.com/logos/mongodb-icon.svg",
+        link: "https://www.mongodb.com/"
+    },
+    {
+        name: "MySQL",
+        icon: "https://cdn.svgporn.com/logos/mysql.svg",
+        link: "https://www.mysql.com/"
+    },
+    {
+        name: "PostgreSQL",
+        icon: "https://cdn.svgporn.com/logos/postgresql.svg",
+        link: "https://www.postgresql.org/"
+    },
+    {
+        name: "Redis",
+        icon: "https://cdn.svgporn.com/logos/redis.svg",
+        link: "https://redis.io/"
+    },
+    {
+        name: "GraphQL",
+        icon: "https://cdn.svgporn.com/logos/graphql.svg",
+        link: "https://graphql.org/"
+    }
+];
+
+const mainBackendKnowledge = {
+    name: "Backend",
+    knowledge: backendKnowledge
+};
+
+const devopsKnowledge: Knowledge[] = [
+    {
+        name: "Docker",
+        icon: "https://cdn.svgporn.com/logos/docker-icon.svg",
+        link: "https://www.docker.com/"
+    },
+    {
+        name: "Kubernetes",
+        icon: "https://cdn.svgporn.com/logos/kubernetes.svg",
+        link: "https://kubernetes.io/"
+    },
+    {
+        name: "Nginx",
+        icon: "https://cdn.svgporn.com/logos/nginx.svg",
+        link: "https://www.nginx.com/"
+    },
+    {
+        name: "Cloudflare",
+        icon: "https://cdn.svgporn.com/logos/cloudflare.svg",
+        link: "https://www.cloudflare.com/"
+    },
+    {
+        name: "Azure",
+        icon: "https://cdn.svgporn.com/logos/microsoft-azure.svg",
+        link: "https://azure.microsoft.com/"
+    },
+    {
+        name: "Google Cloud",
+        icon: "https://cdn.svgporn.com/logos/google-cloud.svg",
+        link: "https://cloud.google.com/"
+    },
+    {
+        name: "CommerceTools",
+        icon: "https://images.ctfassets.net/8q83c033chii/5Gjg45bFu7RmGWLq0wCOll/06e81074e4a44eb6116e0b09cf697834/Partner_Commercetools.svg",
+        link: "https://commercetools.com/"
+    },
+    {
+        name: "Twilio",
+        icon: "https://cdn.svgporn.com/logos/twilio-icon.svg",
+        link: "https://www.twilio.com/"
+    },
+    {
+        name: "SendGrid",
+        icon: "https://cdn.svgporn.com/logos/sendgrid-icon.svg",
+        link: "https://sendgrid.com/"
+    },
+    {
+        name: "GitHub",
+        icon: "https://cdn.svgporn.com/logos/github-octocat.svg",
+        link: "https://github.com"
+    },
+    {
+        name: "Grafana",
+        icon: "https://cdn.svgporn.com/logos/grafana.svg",
+        link: "https://grafana.com/"
+    }
+];
+
+const mainDevopsKnowledge = {
+    name: "DevOps",
+    knowledge: devopsKnowledge
+};
+---
+
+<div>
+    <h1 class="text-center text-2xl font-semibold leading-8 mb-8 mt-32">
+        Knowledge
+    </h1>
+    {
+        [mainFrontendKnowledge, mainBackendKnowledge, mainDevopsKnowledge].map(
+            (mainKnowledge: MainKnowledge) => (
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <h2 class="text-center text-lg font-semibold leading-8 mt-8">
+                        {mainKnowledge.name}
+                    </h2>
+                    <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                        {mainKnowledge.knowledge.map((item) => (
+                            <a
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex flex-col items-center"
+                            >
+                                <img
+                                    src={item.icon}
+                                    alt={item.name}
+                                    class="h-12 w-12"
+                                />
+                                <span class="mt-2 text-sm font-medium">
+                                    {item.name}
+                                </span>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            )
+        )
+    }
+</div>
