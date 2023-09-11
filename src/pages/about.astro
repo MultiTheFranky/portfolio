@@ -1,5 +1,43 @@
 ---
 import Layout from "../layouts/Layout.astro";
+type Social = {
+    name: string;
+    icon: string;
+    link: string;
+};
+
+const socials: Social[] = [
+    {
+        name: "Github",
+        icon: "https://cdn.svgporn.com/logos/github-octocat.svg",
+        link: "https://github.com/multithefranky"
+    },
+    {
+        name: "Linkedin",
+        icon: "https://cdn.svgporn.com/logos/linkedin.svg",
+        link: "https://www.linkedin.com/in/francisco-álamo-garcía-4b1b0a1b0/"
+    },
+    {
+        name: "Twitter",
+        icon: "https://cdn.svgporn.com/logos/twitter.svg",
+        link: "https://twitter.com/multithefranky"
+    },
+    {
+        name: "Instagram",
+        icon: "https://png.pngtree.com/png-clipart/20221019/original/pngtree-instagram-icon-png-image_8704817.png",
+        link: "https://www.instagram.com/multithefranky/"
+    },
+    {
+        name: "Twitch",
+        icon: "https://cdn.svgporn.com/logos/twitch.svg",
+        link: "https://www.twitch.tv/frankyscripter"
+    },
+    {
+        name: "Youtube",
+        icon: "https://cdn.svgporn.com/logos/youtube-icon.svg",
+        link: "https://www.youtube.com/channel/UCWWoFj78QojfXnCv4fNddVg"
+    }
+];
 ---
 
 <style>
@@ -59,11 +97,9 @@ import Layout from "../layouts/Layout.astro";
                 title="MultiTheFranky"
             >
             </div>
-            <div
-                class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
-            >
+            <div class="p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-8">
-                    <div class="text-gray-900 font-bold text-xl mb-2">
+                    <div class="font-bold text-xl mb-2">
                         <p class="inline">Francisco&nbsp;</p>
                         <span class="inline text-gradient">Franky</span><p
                             class="inline"
@@ -71,17 +107,47 @@ import Layout from "../layouts/Layout.astro";
                             Álamo García
                         </p>
                     </div>
-                    <p class="text-gray-700 text-base">
-                        Born in Santander, Spain, in 1997. I am a computer
-                        science student at the University of Cantabria. I am
-                        passionate about technology and I love to learn new
-                        things. I am a very curious person and I like to know
-                        about everything. Working for Incentro. Grandvision
-                        support team and Casashops support and developer.
+                    <p class="text-base">
+                        Born in Santander, Spain, in 1997. I've studied computer
+                        science at the University of Cantabria. I am passionate
+                        about technology and I love to learn new things. I am a
+                        very curious person and I like to know about everything.
+                        Working for Incentro. Grandvision support team and
+                        Casashops support and developer.
                     </p>
-                    <p class="text-gray-700 text-base mt-8">
-                        "Master of none, jack of all trades"
+                    <p class="text-base mt-8">
+                        "Master of some, jack of all trades"
                     </p>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 flex flex-col justify-between leading-normal mt-8">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <h2 class="text-center text-4xl font-semibold leading-8 mt-8">
+                    Social
+                </h2>
+                <div
+                    class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5"
+                >
+                    {
+                        socials.map((item) => (
+                            <a
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex flex-col items-center"
+                            >
+                                <img
+                                    src={item.icon}
+                                    alt={item.name}
+                                    class="h-12 w-12"
+                                />
+                                <span class="mt-2 text-sm font-medium">
+                                    {item.name}
+                                </span>
+                            </a>
+                        ))
+                    }
                 </div>
             </div>
         </div>
