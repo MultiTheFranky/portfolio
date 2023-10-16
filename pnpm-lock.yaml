@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@astrojs/cloudflare':
-    specifier: ^7.5.0
-    version: 7.5.0(@types/node@20.5.1)(astro@3.2.3)
+    specifier: ^7.5.1
+    version: 7.5.1(@types/node@20.5.1)(astro@3.2.3)
   '@astrojs/react':
     specifier: ^3.0.3
     version: 3.0.3(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
@@ -109,12 +109,12 @@ packages:
       '@jridgewell/trace-mapping': 0.3.19
     dev: false
 
-  /@astrojs/cloudflare@7.5.0(@types/node@20.5.1)(astro@3.2.3):
-    resolution: {integrity: sha512-VWPdVOkO8glUTfPkJyVZmn2apJbqFB3wzl7cTX0tVLKHotvyVCAZlViqcDj1WjLkBeRnLunky3UBarOVql8AgA==}
+  /@astrojs/cloudflare@7.5.1(@types/node@20.5.1)(astro@3.2.3):
+    resolution: {integrity: sha512-N1F7iVemMmeqOx4d6RrMHN5mpqgusp7Ao/atFNCEoWVL+0CKk4ht5u8Tv6Nz+Gc6y2wOpX5Db5z2HoMYIWDVqg==}
     peerDependencies:
-      astro: ^3.2.2
+      astro: ^3.2.3
     dependencies:
-      '@astrojs/underscore-redirects': 0.3.0
+      '@astrojs/underscore-redirects': 0.3.1
       '@cloudflare/workers-types': 4.20230821.0
       '@iarna/toml': 2.2.5
       '@miniflare/cache': 2.14.1
@@ -232,8 +232,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/underscore-redirects@0.3.0:
-    resolution: {integrity: sha512-dWBOH6hlGeaERmbdi+jFV2rnTcjOJrNOFYTnTTf8G2x0Gs3Radsh1ObSNEL5Z+xUhXNZLymhLbnN9yQSmh+PQw==}
+  /@astrojs/underscore-redirects@0.3.1:
+    resolution: {integrity: sha512-StqPiY1icuaNsiDUCCZVN7Uppnd0vkGFDq7yRG0vfu8lNK2XqZT1XUrFDPZDC03oQt7Zwv1vMSqidCYUokxvQA==}
     dev: false
 
   /@babel/code-frame@7.22.13:
