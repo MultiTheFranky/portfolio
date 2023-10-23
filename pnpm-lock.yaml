@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@astrojs/cloudflare':
-    specifier: ^7.5.4
-    version: 7.5.4(@types/node@20.5.1)(astro@3.3.1)
+    specifier: ^7.6.1
+    version: 7.6.1(@types/node@20.5.1)(astro@3.3.1)
   '@astrojs/react':
     specifier: ^3.0.3
     version: 3.0.3(@types/react-dom@18.2.13)(@types/react@18.2.31)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
@@ -109,8 +109,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.19
     dev: false
 
-  /@astrojs/cloudflare@7.5.4(@types/node@20.5.1)(astro@3.3.1):
-    resolution: {integrity: sha512-AOe686LoUFvj4xbqxQLHPmXNuf7c2gnwFFQSDWVabxZqoANJW7EjUK+Hb6OVD+RAbhIybUGB1LmImKgYrblEUg==}
+  /@astrojs/cloudflare@7.6.1(@types/node@20.5.1)(astro@3.3.1):
+    resolution: {integrity: sha512-U0eEJaFeb1sKgUFRcemxT5/jcnO4KHFpLxmzonBd/vD57tJPpZ7dIi2rFwAIJ5AQqhW6uo3Evk45EZq8ukN3pQ==}
     peerDependencies:
       astro: ^3.3.0
     dependencies:
