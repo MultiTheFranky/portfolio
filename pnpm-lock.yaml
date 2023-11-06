@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@astrojs/cloudflare':
-    specifier: ^7.6.3
-    version: 7.6.3(@types/node@20.5.1)(astro@3.4.3)
+    specifier: ^7.6.4
+    version: 7.6.4(@types/node@20.5.1)(astro@3.4.3)
   '@astrojs/react':
     specifier: ^3.0.4
     version: 3.0.4(@types/react-dom@18.2.14)(@types/react@18.2.36)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
@@ -109,12 +109,12 @@ packages:
       '@jridgewell/trace-mapping': 0.3.19
     dev: false
 
-  /@astrojs/cloudflare@7.6.3(@types/node@20.5.1)(astro@3.4.3):
-    resolution: {integrity: sha512-X3Va4AIuQhoaVDaI5YxV1JMTPoNHVw6bGVpXqnT8byh0RTLfpjJPg8UdkdK57YW5Ow/73QqwvbJNZUVQlO6n+Q==}
+  /@astrojs/cloudflare@7.6.4(@types/node@20.5.1)(astro@3.4.3):
+    resolution: {integrity: sha512-fConXiIxgnNPc7TL3l2JO9S8ULFiBImzILf6POm/+tTVOOXlx9OnxyXTwC4lxKMDhBI9CeuMLlostF7VVwHWUQ==}
     peerDependencies:
       astro: ^3.3.0
     dependencies:
-      '@astrojs/underscore-redirects': 0.3.0
+      '@astrojs/underscore-redirects': 0.3.3
       '@cloudflare/workers-types': 4.20230821.0
       '@iarna/toml': 2.2.5
       astro: 3.4.3(@types/node@20.5.1)(typescript@5.2.2)
@@ -229,8 +229,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/underscore-redirects@0.3.0:
-    resolution: {integrity: sha512-dWBOH6hlGeaERmbdi+jFV2rnTcjOJrNOFYTnTTf8G2x0Gs3Radsh1ObSNEL5Z+xUhXNZLymhLbnN9yQSmh+PQw==}
+  /@astrojs/underscore-redirects@0.3.3:
+    resolution: {integrity: sha512-qDAKhFO4M1KzP7mxoJfiehf8oyf3EB158MxAa6z10NeD2pR3o4K3LlOQI8CfJgXE+BDBQcnaLvVCg/Mz/Gkg4Q==}
     dev: false
 
   /@babel/code-frame@7.22.13:
@@ -5290,7 +5290,7 @@ packages:
       workerd: 1.20231010.0
       ws: 8.14.2
       youch: 3.3.2
-      zod: 3.21.1
+      zod: 3.22.4
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -7568,10 +7568,6 @@ packages:
       cookie: 0.5.0
       mustache: 4.2.0
       stacktracey: 2.1.8
-    dev: false
-
-  /zod@3.21.1:
-    resolution: {integrity: sha512-+dTu2m6gmCbO9Ahm4ZBDapx2O6ZY9QSPXst2WXjcznPMwf2YNpn3RevLx4KkZp1OPW/ouFcoBtBzFz/LeY69oA==}
     dev: false
 
   /zod@3.22.4:
