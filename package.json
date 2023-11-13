@@ -40,7 +40,7 @@
         "@astrojs/cloudflare": "^7.6.4",
         "@astrojs/react": "^3.0.4",
         "@astrojs/tailwind": "^5.0.2",
-        "@types/react": "^18.2.36",
+        "@types/react": "^18.2.37",
         "@types/react-dom": "^18.2.14",
         "astro": "^3.4.3",
         "react": "^18.2.0",
