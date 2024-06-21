@@ -37,7 +37,7 @@
         ]
     },
     "dependencies": {
-        "@astrojs/cloudflare": "^7.7.1",
+        "@astrojs/cloudflare": "^8.1.0",
         "@astrojs/react": "^3.0.7",
         "@astrojs/tailwind": "^5.1.0",
         "@types/react": "^18.2.48",
