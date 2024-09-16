@@ -51,7 +51,7 @@
         "@commitlint/cli": "19.4.1",
         "@commitlint/config-conventional": "19.5.0",
         "@typescript-eslint/parser": "^6.21.0",
-        "concurrently": "^9.0.0",
+        "concurrently": "^9.0.1",
         "cypress": "^13.14.2",
         "eslint": "^8.57.0",
         "eslint-config-airbnb-base": "^15.0.0",
