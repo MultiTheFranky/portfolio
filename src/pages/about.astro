@@ -7,12 +7,36 @@ type Social = {
 };
 
 const socials: Social[] = [
-    { name: "Github", icon: "/socials/github.svg", link: "https://github.com/multithefranky" },
-    { name: "Linkedin", icon: "/socials/linkedin.svg", link: "https://www.linkedin.com/in/franciscoalamogarcia/" },
-    { name: "Twitter", icon: "/socials/twitter.svg", link: "https://twitter.com/multithefranky" },
-    { name: "Instagram", icon: "/socials/instagram.svg", link: "https://www.instagram.com/multithefranky/" },
-    { name: "Twitch", icon: "/socials/twitch.svg", link: "https://www.twitch.tv/frankyscripter" },
-    { name: "Youtube", icon: "/socials/youtube.svg", link: "https://www.youtube.com/channel/UCWWoFj78QojfXnCv4fNddVg" }
+    {
+        name: "Github",
+        icon: "/socials/github.svg",
+        link: "https://github.com/multithefranky"
+    },
+    {
+        name: "Linkedin",
+        icon: "/socials/linkedin.svg",
+        link: "https://www.linkedin.com/in/franciscoalamogarcia/"
+    },
+    {
+        name: "Twitter",
+        icon: "/socials/twitter.svg",
+        link: "https://twitter.com/multithefranky"
+    },
+    {
+        name: "Instagram",
+        icon: "/socials/instagram.svg",
+        link: "https://www.instagram.com/multithefranky/"
+    },
+    {
+        name: "Twitch",
+        icon: "/socials/twitch.svg",
+        link: "https://www.twitch.tv/frankyscripter"
+    },
+    {
+        name: "Youtube",
+        icon: "/socials/youtube.svg",
+        link: "https://www.youtube.com/channel/UCWWoFj78QojfXnCv4fNddVg"
+    }
 ];
 ---
 
@@ -67,37 +91,53 @@ const socials: Social[] = [
 <Layout title="About">
     <main class="grid h-full place-items-center px-6 py-12 sm:py-20 lg:px-8">
         <div class="w-full max-w-3xl">
-            <section class="bg-transparent rounded-lg overflow-hidden flex flex-col sm:flex-row items-stretch gap-4 reveal" style="--delay:0ms">
+            <section
+                class="bg-transparent rounded-lg overflow-hidden flex flex-col sm:flex-row items-stretch gap-4 reveal"
+                style="--delay:0ms"
+            >
                 <div
                     class="h-48 sm:h-auto sm:w-48 flex-none bg-cover rounded-t sm:rounded-t-none sm:rounded-l text-center overflow-hidden"
                     style="background-image: url('/about.png')"
                     title="MultiTheFranky"
-                />
+                >
+                </div>
 
                 <div class="p-4 flex flex-col justify-between leading-normal">
                     <div>
                         <h1 class="font-bold text-2xl sm:text-xl mb-2">
                             <span class="inline">Francisco&nbsp;</span>
-                            <span class="inline text-gradient" aria-hidden="true">Franky</span>
+                            <span
+                                class="inline text-gradient"
+                                aria-hidden="true">Franky</span
+                            >
                             <span class="sr-only">Franky</span>
                             <span class="inline"> Álamo García</span>
                         </h1>
                         <p class="text-base">
-                            Born in Santander, Spain, in 1997. I've studied computer
-                            science at the University of Cantabria. I am passionate
-                            about technology and I love to learn new things. I am a
-                            very curious person and I like to know about everything.
-                            Working for Incentro. Grandvision support team and
-                            Casashops support and developer.
+                            Born in Santander, Spain, in 1997. I've studied
+                            computer science at the University of Cantabria. I
+                            am passionate about technology and I love to learn
+                            new things. I am a very curious person and I like to
+                            know about everything. Working for Incentro.
+                            Grandvision support team and Casashops support and
+                            developer.
                         </p>
-                        <p class="text-base mt-6 italic">"Jack of all trades, master of some"</p>
+                        <p class="text-base mt-6 italic">
+                            "Jack of all trades, master of some"
+                        </p>
                     </div>
                 </div>
             </section>
 
             <section class="mt-8 reveal" style="--delay:180ms">
-                <h2 class="text-center text-3xl sm:text-4xl font-semibold leading-8">Social</h2>
-                <div class="mx-auto mt-6 grid max-w-lg grid-cols-3 sm:grid-cols-6 gap-6 items-center justify-items-center">
+                <h2
+                    class="text-center text-3xl sm:text-4xl font-semibold leading-8"
+                >
+                    Social
+                </h2>
+                <div
+                    class="mx-auto mt-6 grid max-w-lg grid-cols-3 sm:grid-cols-6 gap-6 items-center justify-items-center"
+                >
                     {
                         socials.map((item, i) => (
                             <a
@@ -118,8 +158,12 @@ const socials: Social[] = [
                                     width="48"
                                     height="48"
                                 />
-                                <span class="mt-2 text-sm font-medium">{item.name}</span>
-                                <span class="sr-only">Open {item.name} in a new tab</span>
+                                <span class="mt-2 text-sm font-medium">
+                                    {item.name}
+                                </span>
+                                <span class="sr-only">
+                                    Open {item.name} in a new tab
+                                </span>
                             </a>
                         ))
                     }
@@ -129,33 +173,56 @@ const socials: Social[] = [
 
         <style>
             /* re-use reveal styles similar to timeline */
-            .reveal { opacity: 0; transform: translateY(10px) scale(0.995); transition: opacity 520ms cubic-bezier(.2,.9,.2,1) var(--delay), transform 520ms cubic-bezier(.2,.9,.2,1) var(--delay); }
-            .reveal.in-view { opacity: 1; transform: translateY(0) scale(1); }
+            .reveal {
+                opacity: 0;
+                transform: translateY(10px) scale(0.995);
+                transition:
+                    opacity 520ms cubic-bezier(0.2, 0.9, 0.2, 1) var(--delay),
+                    transform 520ms cubic-bezier(0.2, 0.9, 0.2, 1) var(--delay);
+            }
+            .reveal.in-view {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
 
             /* subtle hover accessibility */
-            a[rel~="noopener"]:focus { outline: 2px solid rgba(59,130,246,0.4); outline-offset: 2px; }
+            a[rel~="noopener"]:focus {
+                outline: 2px solid rgba(59, 130, 246, 0.4);
+                outline-offset: 2px;
+            }
 
             @media (max-width: 639px) {
-                .text-gradient { font-size: 1.1em; }
+                .text-gradient {
+                    font-size: 1.1em;
+                }
             }
         </style>
 
         <script type="module">
-            if (typeof window !== 'undefined') {
-                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (typeof window !== "undefined") {
+                const prefersReduced = window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches;
                 if (prefersReduced) {
-                    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+                    document
+                        .querySelectorAll(".reveal")
+                        .forEach((el) => el.classList.add("in-view"));
                 } else {
-                    const obs = new IntersectionObserver((entries) => {
-                        entries.forEach(e => {
-                            if (e.isIntersecting) {
-                                e.target.classList.add('in-view');
-                                obs.unobserve(e.target);
-                            }
-                        });
-                    }, { threshold: 0.12 });
+                    const obs = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((e) => {
+                                if (e.isIntersecting) {
+                                    e.target.classList.add("in-view");
+                                    obs.unobserve(e.target);
+                                }
+                            });
+                        },
+                        { threshold: 0.12 }
+                    );
 
-                    document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+                    document
+                        .querySelectorAll(".reveal")
+                        .forEach((el) => obs.observe(el));
                 }
             }
         </script>
