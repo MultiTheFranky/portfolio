@@ -1,8 +1,11 @@
 ---
+import { Image } from "astro:assets";
+
 type Knowledge = {
     name: string;
     icon: string;
     link: string;
+    inverted?: boolean;
 };
 type MainKnowledge = {
     name: string;
@@ -69,8 +72,9 @@ const backendKnowledge: Knowledge[] = [
     },
     {
         name: "Express",
-        icon: "https://adware-technologies.s3.amazonaws.com/uploads/technology/thumbnail/20/express-js.png",
-        link: "https://expressjs.com/"
+        icon: "https://cdn.worldvectorlogo.com/logos/expressjs.svg",
+        link: "https://expressjs.com/",
+        inverted: true
     },
     {
         name: "MongoDB",
@@ -187,10 +191,14 @@ const mainDevopsKnowledge = {
                                 rel="noopener noreferrer"
                                 class="flex flex-col items-center"
                             >
-                                <img
+                                <Image
                                     src={item.icon}
                                     alt={item.name}
-                                    class="h-12 w-12"
+                                    width={48}
+                                    height={48}
+                                    class={`h-12 w-12 rounded-md object-contain shadow-sm ${item.inverted ? "dark:invert" : ""}`}
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <span class="mt-2 text-sm font-medium">
                                     {item.name}

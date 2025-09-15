@@ -1,8 +1,9 @@
 packages:
-    - "."
+  - .
 
 onlyBuiltDependencies:
-    - cypress
-    - esbuild
-    - sharp
-    - workerd
+  - cypress
+  - esbuild
+  - react-vertical-timeline-component
+  - sharp
+  - workerd
