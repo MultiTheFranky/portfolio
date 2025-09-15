@@ -1,0 +1,29 @@
+# Lefthook configuration to replicate previous Husky hooks
+# pre-commit: run pnpm install, add pnpm-lock.yaml if staged, then lint staged files only, then run tests
+# pre-push: run the existing `pnpm prepush` script
+
+pre-commit:
+  commands:
+    pnpm-install-and-lint-staged:
+      run: |
+        # Optionally skip pnpm install in CI/test runs by setting SKIP_PNPM_INSTALL=1
+        if [ -z "$SKIP_PNPM_INSTALL" ]; then
+          pnpm install
+        fi
+
+        # if pnpm-lock.yaml is changed, add it to the commit
+        if git diff --cached --name-only --diff-filter=ACM | grep -q pnpm-lock.yaml; then
+          git add pnpm-lock.yaml
+        fi
+
+        pnpm prettier
+
+        # Lint only staged files using dedicated script
+        node scripts/lint-staged.cjs
+
+        pnpm test
+
+pre-push:
+  commands:
+    run-prepush:
+      run: pnpm prepush
