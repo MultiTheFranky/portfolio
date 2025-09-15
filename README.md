@@ -32,14 +32,14 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`            | Installs dependencies                            |
-| `pnpm dev`                | Starts the development server                    |
-| `pnpm build`              | Builds your project for production               |
-| `pnpm test`               | Runs your test suite                             |
-| `pnpm prettier`           | Formats your code                                |
-| `pnpm lint`               | Lints your code                                  |
+| Command         | Action                             |
+| :-------------- | :--------------------------------- |
+| `pnpm install`  | Installs dependencies              |
+| `pnpm dev`      | Starts the development server      |
+| `pnpm build`    | Builds your project for production |
+| `pnpm test`     | Runs your test suite               |
+| `pnpm prettier` | Formats your code                  |
+| `pnpm lint`     | Lints your code                    |
 
 ## 🐕 Husky
 

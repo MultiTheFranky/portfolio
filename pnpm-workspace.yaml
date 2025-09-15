@@ -1,8 +1,8 @@
 packages:
-  - '.'
+    - "."
 
 onlyBuiltDependencies:
-  - cypress
-  - esbuild
-  - sharp
-  - workerd
+    - cypress
+    - esbuild
+    - sharp
+    - workerd
