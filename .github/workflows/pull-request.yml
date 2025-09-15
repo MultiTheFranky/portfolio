@@ -6,7 +6,7 @@ jobs:
     lint:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v5
             - uses: actions/setup-node@v1
               with:
                   node-version: 18
@@ -19,7 +19,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v5
             - uses: pnpm/action-setup@v2
               with:
                   version: 8
@@ -32,7 +32,7 @@ jobs:
     typecheck:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v5
             - uses: actions/setup-node@v1
               with:
                   node-version: 18
