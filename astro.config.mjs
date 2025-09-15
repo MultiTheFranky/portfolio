@@ -12,7 +12,7 @@ const isCI = !!process.env.CI || !!process.env.GITHUB_ACTIONS;
 const config = {
     integrations: [react(), tailwind()],
     // Use a static output in CI to keep the build simple and portable.
-    output: isCI ? "static" : "server",
+    output: isCI ? "static" : "server"
 };
 
 if (!isCI) {

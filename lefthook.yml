@@ -18,6 +18,10 @@ pre-commit:
 
                 pnpm format
 
+                # If the formatter changed files, stage those changes so they are included
+                # in the same commit. Use add --update to stage modifications/deletions only.
+                git add --update || true
+
                 # Lint only staged files using dedicated script
                 node scripts/lint-staged.cjs
 
