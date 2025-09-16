@@ -10,7 +10,7 @@
         "astro": "astro",
         "precommit": "pnpm lint && pnpm format",
         "prepush": "pnpm build",
-        "lint": "eslint --ext .js,.astro src",
+        "lint": "eslint --ext .js,.ts,.tsx,.astro src",
         "format": "prettier --write . --plugin=prettier-plugin-astro",
         "typecheck": "tsc --noEmit",
         "cy:run": "cypress run",

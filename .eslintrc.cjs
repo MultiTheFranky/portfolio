@@ -16,6 +16,13 @@ module.exports = {
                 // override/add rules settings here, such as:
                 // "astro/no-set-html-directive": "error"
             }
+        },
+        {
+            files: ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
+            parser: "@typescript-eslint/parser",
+            parserOptions: {
+                sourceType: "module"
+            }
         }
     ]
 };

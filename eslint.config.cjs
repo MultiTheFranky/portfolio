@@ -27,9 +27,10 @@ module.exports = [
 
     // Base config for JS/TS files using Airbnb + Prettier
     {
-        files: ["**/*.{js,jsx,ts,tsx}"],
+        files: ["**/*.{js,jsx,ts,tsx}", "**/*.d.ts"],
         // apply Airbnb base parserOptions and rules
         languageOptions: {
+            parser: tsParser,
             parserOptions: airbnbBase.parserOptions || {}
         },
         plugins: {
