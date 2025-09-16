@@ -20,15 +20,25 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v5
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 18
             - uses: pnpm/action-setup@v2
               with:
                   version: 8
             - run: pnpm install --no-frozen-lockfile
-            - name: Cypress run
-              uses: cypress-io/github-action@v5
+            - name: Install Playwright browsers
+              run: pnpm exec playwright install --with-deps
+            - name: Run Playwright tests
+              run: pnpm test:e2e
+            - name: Upload Playwright report
+              if: always()
+              uses: actions/upload-artifact@v4
               with:
-                  build: pnpm run build
-                  start: pnpm start
+                  name: playwright-report
+                  path: playwright-report
+                  retention-days: 7
+                  if-no-files-found: warn
     typecheck:
         runs-on: ubuntu-latest
         steps:

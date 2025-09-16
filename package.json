@@ -13,9 +13,8 @@
         "lint": "eslint --ext .js,.ts,.tsx,.astro src",
         "format": "prettier --write . --plugin=prettier-plugin-astro",
         "typecheck": "tsc --noEmit",
-        "cy:run": "cypress run",
-        "test:e2e": "start-server-and-test start http://localhost:4321 cy:run",
-        "test": "concurrently \"pnpm typecheck\" \"pnpm lint\" \"pnpm test:e2e\" -n \"Typecheck,Lint,Cypress\""
+        "test:e2e": "playwright test",
+        "test": "concurrently \"pnpm typecheck\" \"pnpm lint\" \"pnpm test:e2e\" -n \"Typecheck,Lint,Playwright\""
     },
     "engines": {
         "npm": "please-use-pnpm",
@@ -54,7 +53,6 @@
         "@typescript-eslint/eslint-plugin": "^8.43.0",
         "@typescript-eslint/parser": "^8.43.0",
         "concurrently": "^9.2.1",
-        "cypress": "^13.17.0",
         "eslint": "^9.35.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^18.0.0",
@@ -68,7 +66,7 @@
         "eslint-plugin-unicorn": "^61.0.2",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
-        "start-server-and-test": "^2.1.0",
-        "typescript": "5.9.2"
+        "typescript": "5.9.2",
+        "@playwright/test": "^1.50.0"
     }
 }

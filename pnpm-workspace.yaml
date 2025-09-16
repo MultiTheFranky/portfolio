@@ -2,7 +2,6 @@ packages:
   - .
 
 onlyBuiltDependencies:
-  - cypress
   - esbuild
   - react-vertical-timeline-component
   - sharp

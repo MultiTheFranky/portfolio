@@ -22,3 +22,5 @@ pnpm-debug.log*
 
 # Visual Studio Code files
 .vscode/
+playwright-report/
+test-results/
