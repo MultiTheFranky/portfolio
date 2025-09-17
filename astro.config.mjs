@@ -1,8 +1,7 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import cloudflare from "@astrojs/cloudflare";
-
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 // When running in CI (or GitHub Actions) prefer a static build to avoid
 // generating server entrypoints that some CI environments (or adapters)
@@ -10,7 +9,10 @@ import tailwind from "@astrojs/tailwind";
 const isCI = !!process.env.CI || !!process.env.GITHUB_ACTIONS;
 
 const config = {
-    integrations: [react(), tailwind()],
+    integrations: [react()],
+    vite: {
+        plugins: [tailwindcss()]
+    },
     // Use a static output in CI to keep the build simple and portable.
     output: isCI ? "static" : "server"
 };
