@@ -44,12 +44,13 @@
         "astro": "^4.16.19",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
-        "react-vertical-timeline-component": "^3.5.3",
+        "react-vertical-timeline-component": "^3.6.0",
         "tailwindcss": "^3.4.17"
     },
     "devDependencies": {
         "@commitlint/cli": "19.8.1",
         "@commitlint/config-conventional": "19.8.1",
+        "@playwright/test": "^1.50.0",
         "@typescript-eslint/eslint-plugin": "^8.43.0",
         "@typescript-eslint/parser": "^8.43.0",
         "concurrently": "^9.2.1",
@@ -66,7 +67,6 @@
         "eslint-plugin-unicorn": "^61.0.2",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
-        "typescript": "5.9.2",
-        "@playwright/test": "^1.50.0"
+        "typescript": "5.9.2"
     }
 }
