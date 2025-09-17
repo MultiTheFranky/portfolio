@@ -1,54 +1,41 @@
 # MultiTheFranky
 
-Production: [https://multithefranky.com](https://multithefranky.com)
+Production: https://multithefranky.com
 
-Usage of [Astro](https://astro.build) and [React](https://reactjs.org) to create my personal website.
+This site is built with Astro and React.
 
-## 🚀 Project Structure
+## Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside the project you'll find:
+- `public/` - static assets such as `favicon.svg`
+- `src/components/` - shared UI components
+- `src/layouts/` - layout shells for pages
+- `src/pages/` - route files rendered by Astro
+- `package.json` - project metadata and scripts
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Any static asset placed in `public/` is served at the root URL. Files in `src/pages/` become routes based on their file name.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Run all commands from the project root:
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Command | Action |
+| :-- | :-- |
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Start the development server |
+| `pnpm build` | Create a production build |
+| `pnpm test` | Run the full test suite |
+| `pnpm lint` | Lint the project |
+| `pnpm format` | Format source files |
 
-## 🧞 Commands
+## Tooling
 
-All commands are run from the root of the project, from a terminal:
+The project uses pnpm for dependency management and Husky hooks for basic Git hygiene.
 
-| Command         | Action                             |
-| :-------------- | :--------------------------------- |
-| `pnpm install`  | Installs dependencies              |
-| `pnpm dev`      | Starts the development server      |
-| `pnpm build`    | Builds your project for production |
-| `pnpm test`     | Runs your test suite               |
-| `pnpm prettier` | Formats your code                  |
-| `pnpm lint`     | Lints your code                    |
+## Deployment
 
-## 🐕 Husky
+The build expects Node.js 22.19.0 or newer. If you deploy to Cloudflare Pages, set the project variable `NODE_VERSION` to `22.19.0` (or rely on the `.nvmrc` file in the repository root) so the build uses a supported runtime. Running `pnpm env use --global 22.19.0` locally keeps development in sync.
 
-This project uses [Husky](https://typicode.github.io/husky/#/) to run commands before committing and pushing.
+## License
 
-## 📦 Dependencies
-
-This project uses [pnpm](https://pnpm.io) to manage dependencies.
-
-## 📝 License
-
-This project is licensed under the [MIT License](./LICENSE).
+Licensed under the MIT License.
