@@ -1,33 +1,151 @@
-<footer class="m-4">
+<footer class="m-4 footer-container">
     <div
-        class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+        class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between footer-content"
     >
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-            >© 2023 <a
+        <span
+            class="text-sm text-gray-500 sm:text-center dark:text-gray-400 footer-item"
+            >© {new Date().getFullYear()}
+            <a
                 href="https://multithefranky.com/"
-                class="hover:underline">MultiTheFranky</a
+                class="footer-link hover:underline">MultiTheFranky</a
             >. All Rights Reserved.
         </span>
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-            >Made with ❤️ by <a
+        <span
+            class="text-sm text-gray-500 sm:text-center dark:text-gray-400 footer-item footer-heart"
+            >Made with <span class="heart-icon">❤️</span> by <a
                 href="https://github.com/multithefranky/"
-                class="hover:underline">MultiTheFranky</a
+                class="footer-link hover:underline">MultiTheFranky</a
             > in <a
                 href="https://github.com/MultiTheFranky/portfolio"
-                class="hover:underline">Github</a
+                class="footer-link hover:underline">Github</a
             >.
         </span>
         <ul
             class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
         >
-            <li>
-                <a href="/about" class="mr-4 hover:underline md:mr-6">About</a>
+            <li class="footer-item">
+                <a
+                    href="/about"
+                    class="footer-link mr-4 hover:underline md:mr-6">About</a
+                >
             </li>
-            <li>
-                <a href="mailto:me@multithefranky.com" class="hover:underline"
-                    >Contact</a
+            <li class="footer-item">
+                <a
+                    href="mailto:me@multithefranky.com"
+                    class="footer-link hover:underline">Contact</a
                 >
             </li>
         </ul>
     </div>
+
+    <style>
+        .footer-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 177, 187, 0.5),
+                transparent
+            );
+            animation: footer-line-slide 8s linear infinite;
+        }
+
+        @keyframes footer-line-slide {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .footer-content {
+            opacity: 0;
+            animation: footer-fade-in 0.8s ease-out 0.3s forwards;
+        }
+
+        @keyframes footer-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer-item {
+            transition: all 0.3s ease;
+        }
+
+        .footer-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #00b1bb, #0d0950);
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-link:hover {
+            color: #00b1bb;
+        }
+
+        .heart-icon {
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.15);
+            }
+        }
+
+        .footer-heart:hover .heart-icon {
+            animation: heartbeat-fast 0.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat-fast {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+    </style>
 </footer>

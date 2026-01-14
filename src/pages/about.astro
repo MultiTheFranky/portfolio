@@ -92,11 +92,11 @@ const socials: Social[] = [
     <main class="grid h-full place-items-center px-6 py-12 sm:py-20 lg:px-8">
         <div class="w-full max-w-3xl">
             <section
-                class="bg-transparent rounded-lg overflow-hidden flex flex-col sm:flex-row items-stretch gap-4 reveal"
+                class="bg-transparent rounded-lg overflow-hidden flex flex-col sm:flex-row items-stretch gap-4 reveal profile-card"
                 style="--delay:0ms"
             >
                 <div
-                    class="h-48 sm:h-auto sm:w-48 flex-none bg-cover rounded-t sm:rounded-t-none sm:rounded-l text-center overflow-hidden"
+                    class="profile-image h-48 sm:h-auto sm:w-48 flex-none bg-cover rounded-t sm:rounded-t-none sm:rounded-l text-center overflow-hidden"
                     style="background-image: url('/about.png')"
                     title="MultiTheFranky"
                 >
@@ -105,15 +105,25 @@ const socials: Social[] = [
                 <div class="p-4 flex flex-col justify-between leading-normal">
                     <div>
                         <h1 class="font-bold text-2xl sm:text-xl mb-2">
-                            <span class="inline">Francisco&nbsp;</span>
                             <span
-                                class="inline text-gradient"
+                                class="inline name-reveal"
+                                style="animation-delay: 0.2s"
+                                >Francisco&nbsp;</span
+                            >
+                            <span
+                                class="inline text-gradient name-reveal"
+                                style="animation-delay: 0.4s"
                                 aria-hidden="true">Franky</span
                             >
                             <span class="sr-only">Franky</span>
-                            <span class="inline"> Álamo García</span>
+                            <span
+                                class="inline name-reveal"
+                                style="animation-delay: 0.6s"
+                            >
+                                Álamo García</span
+                            >
                         </h1>
-                        <p class="text-base">
+                        <p class="text-base bio-text">
                             Born in Santander, Spain, in 1997. I've studied
                             computer science at the University of Cantabria. I
                             am passionate about technology and I love to learn
@@ -122,7 +132,7 @@ const socials: Social[] = [
                             Grandvision support team and Casashops support and
                             developer.
                         </p>
-                        <p class="text-base mt-6 italic">
+                        <p class="text-base mt-6 italic quote-text">
                             "Jack of all trades, master of some"
                         </p>
                     </div>
@@ -131,7 +141,7 @@ const socials: Social[] = [
 
             <section class="mt-8 reveal" style="--delay:180ms">
                 <h2
-                    class="text-center text-3xl sm:text-4xl font-semibold leading-8"
+                    class="text-center text-3xl sm:text-4xl font-semibold leading-8 section-title"
                 >
                     Social
                 </h2>
@@ -144,21 +154,23 @@ const socials: Social[] = [
                                 href={item.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="flex flex-col items-center transform transition-transform duration-200 hover:scale-105 focus:scale-105"
-                                style={`--delay:${220 + i * 40}ms`}
+                                class="social-card flex flex-col items-center transform transition-transform duration-200"
+                                style={`--delay:${220 + i * 40}ms; --index: ${i}`}
                                 aria-label={`${item.name} (opens in a new tab)`}
                             >
-                                <img
-                                    src={item.icon}
-                                    alt=""
-                                    aria-hidden="true"
-                                    class="h-12 w-12 rounded-md object-contain shadow-sm dark:invert"
-                                    loading="lazy"
-                                    decoding="async"
-                                    width="48"
-                                    height="48"
-                                />
-                                <span class="mt-2 text-sm font-medium">
+                                <div class="social-icon-wrapper">
+                                    <img
+                                        src={item.icon}
+                                        alt=""
+                                        aria-hidden="true"
+                                        class="social-icon h-12 w-12 rounded-md object-contain shadow-sm dark:invert"
+                                        loading="lazy"
+                                        decoding="async"
+                                        width="48"
+                                        height="48"
+                                    />
+                                </div>
+                                <span class="mt-2 text-sm font-medium social-name">
                                     {item.name}
                                 </span>
                                 <span class="sr-only">
@@ -172,6 +184,260 @@ const socials: Social[] = [
         </div>
 
         <style>
+            /* Profile card enhancements */
+            .profile-card {
+                position: relative;
+                border: 1px solid rgba(0, 177, 187, 0.2);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .profile-card::before {
+                content: "";
+                position: absolute;
+                inset: -2px;
+                background: linear-gradient(
+                    45deg,
+                    #00b1bb,
+                    #0d0950,
+                    #00b1bb,
+                    #0d0950
+                );
+                background-size: 400% 400%;
+                border-radius: inherit;
+                z-index: -1;
+                opacity: 0;
+                animation: border-rotate 4s linear infinite;
+                transition: opacity 0.3s ease;
+            }
+
+            .profile-card:hover::before {
+                opacity: 0.6;
+            }
+
+            @keyframes border-rotate {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            .profile-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 50px rgba(0, 177, 187, 0.15);
+            }
+
+            /* Profile image effects */
+            .profile-image {
+                position: relative;
+                transition: all 0.4s ease;
+            }
+
+            .profile-image::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    135deg,
+                    rgba(0, 177, 187, 0.2),
+                    transparent
+                );
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .profile-card:hover .profile-image::after {
+                opacity: 1;
+            }
+
+            .profile-card:hover .profile-image {
+                transform: scale(1.02);
+            }
+
+            /* Name reveal animation */
+            .name-reveal {
+                opacity: 0;
+                animation: name-fade-in 0.6s ease-out forwards;
+            }
+
+            @keyframes name-fade-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Bio text animation */
+            .bio-text {
+                opacity: 0;
+                animation: bio-reveal 0.8s ease-out 0.8s forwards;
+            }
+
+            @keyframes bio-reveal {
+                from {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            /* Quote animation */
+            .quote-text {
+                opacity: 0;
+                animation: quote-reveal 0.8s ease-out 1.2s forwards;
+                position: relative;
+            }
+
+            .quote-text::before {
+                content: "";
+                position: absolute;
+                left: -10px;
+                top: 0;
+                bottom: 0;
+                width: 3px;
+                background: linear-gradient(180deg, #00b1bb, #0d0950);
+                transform: scaleY(0);
+                animation: quote-line 0.5s ease-out 1.5s forwards;
+            }
+
+            @keyframes quote-reveal {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes quote-line {
+                to {
+                    transform: scaleY(1);
+                }
+            }
+
+            /* Section title */
+            .section-title {
+                background: linear-gradient(135deg, #64748b, #00b1bb, #64748b);
+                background-size: 200% auto;
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: shimmer-title 4s linear infinite;
+            }
+
+            :global(.dark) .section-title {
+                background: linear-gradient(135deg, #94a3b8, #00b1bb, #94a3b8);
+                background-size: 200% auto;
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            @keyframes shimmer-title {
+                0% {
+                    background-position: -100% 0;
+                }
+                100% {
+                    background-position: 100% 0;
+                }
+            }
+
+            /* Social card animations */
+            .social-card {
+                position: relative;
+                padding: 1rem;
+                border-radius: 1rem;
+                opacity: 0;
+                animation: social-reveal 0.5s ease-out forwards;
+                animation-delay: calc(var(--index) * 100ms + 400ms);
+            }
+
+            @keyframes social-reveal {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px) scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            .social-card::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: 1rem;
+                background: radial-gradient(
+                    circle at center,
+                    rgba(0, 177, 187, 0.15),
+                    transparent
+                );
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .social-card:hover::before {
+                opacity: 1;
+            }
+
+            .social-card:hover {
+                transform: translateY(-10px) scale(1.1) !important;
+            }
+
+            .social-icon-wrapper {
+                position: relative;
+            }
+
+            .social-icon-wrapper::after {
+                content: "";
+                position: absolute;
+                inset: -8px;
+                background: radial-gradient(
+                    circle,
+                    rgba(0, 177, 187, 0.4) 0%,
+                    transparent 70%
+                );
+                border-radius: 50%;
+                opacity: 0;
+                transform: scale(0.8);
+                transition: all 0.3s ease;
+            }
+
+            .social-card:hover .social-icon-wrapper::after {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .social-icon {
+                position: relative;
+                z-index: 1;
+                transition: all 0.3s ease;
+            }
+
+            .social-card:hover .social-icon {
+                transform: rotate(10deg) scale(1.1);
+                filter: drop-shadow(0 5px 15px rgba(0, 177, 187, 0.4));
+            }
+
+            .social-name {
+                transition: all 0.3s ease;
+            }
+
+            .social-card:hover .social-name {
+                color: #00b1bb;
+            }
+
             /* re-use reveal styles similar to timeline */
             .reveal {
                 opacity: 0;
