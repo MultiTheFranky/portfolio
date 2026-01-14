@@ -35,7 +35,11 @@ const iconStyle: CSSProperties = {
 const { VerticalTimeline, VerticalTimelineElement } = timeline;
 
 const TimelineVertical: FC<TimelineVerticalProps> = ({ entries }) => (
-    <VerticalTimeline className="timeline-react" animate lineColor="rgba(148, 163, 184, 0.4)">
+    <VerticalTimeline
+        className="timeline-react"
+        animate
+        lineColor="rgba(148, 163, 184, 0.4)"
+    >
         {entries.map((entry) => (
             <VerticalTimelineElement
                 key={`${entry.title}-${entry.date}`}
@@ -60,4 +64,3 @@ const TimelineVertical: FC<TimelineVerticalProps> = ({ entries }) => (
 );
 
 export default TimelineVertical;
-

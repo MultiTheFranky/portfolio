@@ -1,4 +1,9 @@
-﻿import type { ComponentType, CSSProperties, MouseEventHandler, ReactNode } from "react";
+﻿import type {
+    ComponentType,
+    CSSProperties,
+    MouseEventHandler,
+    ReactNode
+} from "react";
 
 declare module "react-vertical-timeline-component" {
     export interface VerticalTimelineProps {
@@ -44,4 +49,3 @@ declare module "react-vertical-timeline-component" {
 
     export default timeline;
 }
-
