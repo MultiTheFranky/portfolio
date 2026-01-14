@@ -7,6 +7,7 @@ This site is built with Astro and React.
 ## Project Structure
 
 Inside the project you'll find:
+
 - `public/` - static assets such as `favicon.svg`
 - `src/components/` - shared UI components
 - `src/layouts/` - layout shells for pages
@@ -19,14 +20,14 @@ Any static asset placed in `public/` is served at the root URL. Files in `src/pa
 
 Run all commands from the project root:
 
-| Command | Action |
-| :-- | :-- |
-| `pnpm install` | Install dependencies |
-| `pnpm dev` | Start the development server |
-| `pnpm build` | Create a production build |
-| `pnpm test` | Run the full test suite |
-| `pnpm lint` | Lint the project |
-| `pnpm format` | Format source files |
+| Command        | Action                       |
+| :------------- | :--------------------------- |
+| `pnpm install` | Install dependencies         |
+| `pnpm dev`     | Start the development server |
+| `pnpm build`   | Create a production build    |
+| `pnpm test`    | Run the full test suite      |
+| `pnpm lint`    | Lint the project             |
+| `pnpm format`  | Format source files          |
 
 ## Tooling
 

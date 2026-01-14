@@ -1,8 +1,8 @@
 packages:
-  - .
+    - .
 
 onlyBuiltDependencies:
-  - esbuild
-  - react-vertical-timeline-component
-  - sharp
-  - workerd
+    - esbuild
+    - react-vertical-timeline-component
+    - sharp
+    - workerd
