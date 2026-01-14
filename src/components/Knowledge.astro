@@ -173,41 +173,251 @@ const mainDevopsKnowledge = {
 ---
 
 <div>
-    <h1 class="text-center text-2xl font-semibold leading-8 mb-8 mt-32">
+    <h1
+        class="text-center text-2xl font-semibold leading-8 mb-8 mt-32 scroll-reveal"
+    >
         Knowledge
     </h1>
     {
         [mainFrontendKnowledge, mainBackendKnowledge, mainDevopsKnowledge].map(
-            (mainKnowledge: MainKnowledge) => (
-                <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                    <h2 class="text-center text-lg font-semibold leading-8 mt-8">
+            (mainKnowledge: MainKnowledge, sectionIndex: number) => (
+                <div
+                    class={`mx-auto max-w-7xl px-6 lg:px-8 scroll-reveal`}
+                    style={`transition-delay: ${sectionIndex * 150}ms`}
+                >
+                    <h2 class="text-center text-lg font-semibold leading-8 mt-8 gradient-text-subtle">
                         {mainKnowledge.name}
                     </h2>
                     <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-                        {mainKnowledge.knowledge.map((item) => (
-                            <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="flex flex-col items-center"
-                            >
-                                <Image
-                                    src={item.icon}
-                                    alt={item.name}
-                                    width={48}
-                                    height={48}
-                                    class={`h-12 w-12 rounded-md object-contain shadow-sm ${item.inverted ? "dark:invert" : ""}`}
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                                <span class="mt-2 text-sm font-medium">
-                                    {item.name}
-                                </span>
-                            </a>
-                        ))}
+                        {mainKnowledge.knowledge.map(
+                            (item, itemIndex: number) => (
+                                <a
+                                    href={item.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="skill-card-wrapper flex flex-col items-center group"
+                                    style={`animation-delay: ${sectionIndex * 200 + itemIndex * 50}ms`}
+                                >
+                                    <div class="skill-icon-container relative">
+                                        <div class="skill-icon-glow" />
+                                        <Image
+                                            src={item.icon}
+                                            alt={item.name}
+                                            width={48}
+                                            height={48}
+                                            class={`skill-icon h-12 w-12 rounded-md object-contain shadow-sm ${item.inverted ? "dark:invert" : ""}`}
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+                                    </div>
+                                    <span class="mt-2 text-sm font-medium skill-name">
+                                        {item.name}
+                                    </span>
+                                </a>
+                            )
+                        )}
                     </div>
                 </div>
             )
         )
     }
+
+    <style>
+        .gradient-text-subtle {
+            background: linear-gradient(135deg, #64748b, #00b1bb, #64748b);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer-text 4s linear infinite;
+        }
+
+        :global(.dark) .gradient-text-subtle {
+            background: linear-gradient(135deg, #94a3b8, #00b1bb, #94a3b8);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        @keyframes shimmer-text {
+            0% {
+                background-position: -100% 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        .skill-card-wrapper {
+            position: relative;
+            padding: 1rem;
+            border-radius: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: skill-fade-in 0.6s ease-out forwards;
+        }
+
+        @keyframes skill-fade-in {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-card-wrapper::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 177, 187, 0.1),
+                transparent
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card-wrapper:hover::before {
+            opacity: 1;
+        }
+
+        .skill-card-wrapper:hover {
+            transform: translateY(-12px) scale(1.05);
+        }
+
+        .skill-icon-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-icon-glow {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(
+                circle,
+                rgba(0, 177, 187, 0.4) 0%,
+                transparent 70%
+            );
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.4s ease;
+        }
+
+        .skill-card-wrapper:hover .skill-icon-glow {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .skill-icon {
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-card-wrapper:hover .skill-icon {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 8px 20px rgba(0, 177, 187, 0.4));
+        }
+
+        .skill-name {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .skill-card-wrapper:hover .skill-name {
+            color: #00b1bb;
+            transform: translateY(2px);
+        }
+
+        .skill-name::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00b1bb, #0d0950);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .skill-card-wrapper:hover .skill-name::after {
+            width: 100%;
+        }
+
+        /* Staggered reveal animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating animation on idle */
+        @keyframes subtle-float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .skill-card-wrapper:not(:hover) .skill-icon {
+            animation: subtle-float 3s ease-in-out infinite;
+            animation-delay: var(--float-delay, 0s);
+        }
+    </style>
+
+    <script>
+        // Intersection Observer for scroll reveal
+        if (typeof window !== "undefined") {
+            const prefersReduced = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+            if (!prefersReduced) {
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("visible");
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+                );
+
+                document
+                    .querySelectorAll(".scroll-reveal")
+                    .forEach((el) => observer.observe(el));
+
+                // Add random float delays to skill cards
+                document
+                    .querySelectorAll(".skill-card-wrapper")
+                    .forEach((el, i) => {
+                        (el as HTMLElement).style.setProperty(
+                            "--float-delay",
+                            `${i * 0.2}s`
+                        );
+                    });
+            } else {
+                document
+                    .querySelectorAll(".scroll-reveal")
+                    .forEach((el) => el.classList.add("visible"));
+            }
+        }
+    </script>
 </div>
