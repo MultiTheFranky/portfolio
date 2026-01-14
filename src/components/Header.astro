@@ -73,13 +73,143 @@ import ThemeIcon from "./ThemeIcon.astro";
         background-color: #0d0950;
         color: #fff;
     }
+
+    /* Header entrance animation */
+    nav {
+        animation: header-slide-down 0.8s ease-out;
+    }
+
+    @keyframes header-slide-down {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Logo hover effect */
+    .logo-container {
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-container:hover {
+        transform: scale(1.02);
+    }
+
+    .logo-container::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #00b1bb, #0d0950);
+        transition: all 0.4s ease;
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+
+    .logo-container:hover::after {
+        width: 80%;
+    }
+
+    /* Navigation link animations */
+    .nav-link {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #00b1bb, #0d0950);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover::before {
+        transform: translateX(0);
+    }
+
+    .nav-link:hover {
+        color: #00b1bb !important;
+    }
+
+    /* Floating animation for nav items */
+    .nav-item {
+        animation: nav-float 0.6s ease-out backwards;
+    }
+
+    .nav-item:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+    .nav-item:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    .nav-item:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+    .nav-item:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes nav-float {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Mobile menu button animation */
+    .menu-btn {
+        transition: all 0.3s ease;
+    }
+
+    .menu-btn:hover {
+        transform: scale(1.1);
+        color: #00b1bb;
+    }
+
+    .menu-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* Glass effect for header background */
+    .header-glass {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 177, 187, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    :global(.dark) .header-glass {
+        background: rgba(13, 9, 80, 0.8);
+        border-bottom: 1px solid rgba(0, 177, 187, 0.2);
+    }
 </style>
 
-<nav class="border-gray-200">
+<nav class="border-gray-200 header-glass sticky top-0 z-50">
     <div
         class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
-        <a href="https://multithefranky.com/" class="flex items-center">
+        <a
+            href="https://multithefranky.com/"
+            class="flex items-center logo-container"
+        >
             <p class="mr-8 ml-8 text-6xl text-gray-500">
                 MultiThe<span class="text-gradient">Franky</span>
             </p>
@@ -87,7 +217,7 @@ import ThemeIcon from "./ThemeIcon.astro";
         <button
             data-collapse-toggle="navbar-default"
             type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            class="menu-btn inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-default"
             aria-expanded="false"
         >
@@ -111,28 +241,30 @@ import ThemeIcon from "./ThemeIcon.astro";
             <ul
                 class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
             >
-                <li>
+                <li class="nav-item">
                     <a
                         href="/"
-                        class="block py-2 pl-3 pr-4 text-black rounded md:bg-transparent md:p-0 dark:text-white"
+                        class="nav-link block py-2 pl-3 pr-4 text-black rounded md:bg-transparent md:p-0 dark:text-white"
                         aria-current="page">Home</a
                     >
                 </li>
-                <li>
+                <li class="nav-item">
                     <a
                         href="/about"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                        class="nav-link block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                         >About</a
                     >
                 </li>
-                <li>
+                <li class="nav-item">
                     <a
                         href="mailto:me@multithefranky.com"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                        class="nav-link block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                         >Contact</a
                     >
                 </li>
-                <ThemeIcon />
+                <li class="nav-item">
+                    <ThemeIcon />
+                </li>
             </ul>
         </div>
     </div>

@@ -110,7 +110,8 @@ const socials: Social[] = [
                                 >Francisco&nbsp;</span
                             >
                             <span
-                                class="inline text-gradient"
+                                class="inline text-gradient name-reveal"
+                                style="animation-delay: 0.4s"
                                 aria-hidden="true">Franky</span
                             >
                             <span class="sr-only">Franky</span>
@@ -259,10 +260,7 @@ const socials: Social[] = [
             /* Name reveal animation */
             .name-reveal {
                 opacity: 0;
-                animation-name: name-fade-in;
-                animation-duration: 0.6s;
-                animation-timing-function: ease-out;
-                animation-fill-mode: forwards;
+                animation: name-fade-in 0.6s ease-out forwards;
             }
 
             @keyframes name-fade-in {

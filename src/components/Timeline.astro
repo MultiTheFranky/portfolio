@@ -32,13 +32,43 @@ const timelineEntries: TimelineEntry[] = [
 ---
 
 <main class="timeline-surface mx-auto max-w-7xl px-6 lg:px-8 mb-16 mt-16">
-    <h1 class="text-center text-2xl font-semibold leading-8 mb-8 mt-32">
+    <h1
+        class="text-center text-2xl font-semibold leading-8 mb-8 mt-32 timeline-title"
+    >
         Timeline
     </h1>
 
     <TimelineVertical client:load entries={timelineEntries} />
 
     <style>
+        .timeline-title {
+            opacity: 0;
+            animation: title-reveal 0.8s ease-out 0.2s forwards;
+            background: linear-gradient(135deg, #64748b, #00b1bb, #64748b);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        :global(.dark) .timeline-title {
+            background: linear-gradient(135deg, #94a3b8, #00b1bb, #94a3b8);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        @keyframes title-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .timeline-surface {
             --timeline-card-bg: rgba(255, 255, 255, 0.96);
             --timeline-card-border: rgba(148, 163, 184, 0.42);
@@ -62,8 +92,25 @@ const timelineEntries: TimelineEntry[] = [
         }
 
         :global(.timeline-surface .vertical-timeline::before) {
-            background: rgba(148, 163, 184, 0.45);
+            background: linear-gradient(
+                180deg,
+                transparent,
+                rgba(0, 177, 187, 0.6),
+                rgba(13, 9, 80, 0.6),
+                transparent
+            );
             width: 3px;
+            animation: timeline-line-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes timeline-line-glow {
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(0, 177, 187, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(0, 177, 187, 0.6);
+            }
         }
 
         :global(.timeline-surface .vertical-timeline-element) {
@@ -81,18 +128,34 @@ const timelineEntries: TimelineEntry[] = [
             height: 3.25rem;
             justify-content: center;
             transition:
-                transform 220ms ease,
-                box-shadow 220ms ease;
+                transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 320ms ease;
             width: 3.25rem;
+            animation: icon-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes icon-pulse {
+            0%,
+            100% {
+                box-shadow: 0 14px 28px rgba(29, 78, 216, 0.32);
+            }
+            50% {
+                box-shadow: 0 14px 40px rgba(0, 177, 187, 0.5);
+            }
         }
 
         :global(.timeline-surface .timeline-icon:hover) {
-            transform: scale(1.06);
-            box-shadow: 0 18px 38px rgba(29, 78, 216, 0.28);
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 20px 50px rgba(0, 177, 187, 0.5);
         }
 
         :global(.timeline-surface .timeline-icon-symbol) {
             line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        :global(.timeline-surface .timeline-icon:hover .timeline-icon-symbol) {
+            transform: scale(1.2);
         }
 
         :global(.timeline-surface .timeline-card) {
@@ -102,6 +165,35 @@ const timelineEntries: TimelineEntry[] = [
             box-shadow: var(--timeline-card-shadow) !important;
             color: var(--timeline-card-text) !important;
             padding: 1.75rem 2rem !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        :global(.timeline-surface .timeline-card::before) {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 177, 187, 0.1),
+                transparent
+            );
+            transition: left 0.5s ease;
+        }
+
+        :global(.timeline-surface .timeline-card:hover::before) {
+            left: 100%;
+        }
+
+        :global(.timeline-surface .timeline-card:hover) {
+            transform: translateY(-8px) scale(1.02) !important;
+            box-shadow: 0 30px 60px rgba(0, 177, 187, 0.2) !important;
+            border-color: rgba(0, 177, 187, 0.4) !important;
         }
 
         :global(.timeline-surface .vertical-timeline-element-content-arrow) {
