@@ -13,7 +13,7 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: ^12.0.0
-        version: 12.6.12(@types/node@25.0.2)(astro@5.16.10(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1))(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)
+        version: 12.6.12(@types/node@25.0.2)(astro@5.16.11(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1))(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)
       '@astrojs/react':
         specifier: ^4.3.1
         version: 4.4.2(@types/node@25.0.2)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(yaml@2.8.1)
@@ -28,7 +28,7 @@ importers:
         version: 3.3.6
       astro:
         specifier: ^5.13.8
-        version: 5.16.10(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1)
+        version: 5.16.11(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1)
       react:
         specifier: ^19.0.0
         version: 19.2.3
@@ -1363,8 +1363,8 @@ packages:
     resolution: {integrity: sha512-JepyLROIad6f44uyqMF6HKE2QbunNzp3mYKRcPoDGt0QkxXmH222FAFC64WTyQu2Kg8NNEXHTN/sWuUId9sSxw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  astro@5.16.10:
-    resolution: {integrity: sha512-mBaRwFrqwCHiKDvvfNW2rRRkLAqnkj3lbkte6Vg4OzeUiDyEsdU4oOqTZxHJf/mxzZvBiU37BxG1oeh+tq1IUA==}
+  astro@5.16.11:
+    resolution: {integrity: sha512-Z7kvkTTT5n6Hn5lCm6T3WU6pkxx84Hn25dtQ6dR7ATrBGq9eVa8EuB/h1S8xvaoVyCMZnIESu99Z9RJfdLRLDA==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2062,9 +2062,9 @@ packages:
   fontace@0.4.0:
     resolution: {integrity: sha512-moThBCItUe2bjZip5PF/iZClpKHGLwMvR79Kp8XpGRBrvoRSnySN4VcILdv3/MJzbhvUA5WeiUXF5o538m5fvg==}
 
-  fontkitten@1.0.1:
-    resolution: {integrity: sha512-m+/cO+/kAU9farlejecXLgQH20+UXyH0K6oosGtogAz7BWco+KTYE60epKwMt8eVxqlOE2Fs+GoHVlGDUbKOoA==}
-    engines: {node: '>=24.12.0'}
+  fontkitten@1.0.2:
+    resolution: {integrity: sha512-piJxbLnkD9Xcyi7dWJRnqszEURixe7CrF/efBfbffe2DPyabmuIuqraruY8cXTs19QoM8VJzx47BDRVNXETM7Q==}
+    engines: {node: '>=20'}
 
   for-each@0.3.5:
     resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
@@ -3788,12 +3788,12 @@ packages:
 
 snapshots:
 
-  '@astrojs/cloudflare@12.6.12(@types/node@25.0.2)(astro@5.16.10(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1))(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)':
+  '@astrojs/cloudflare@12.6.12(@types/node@25.0.2)(astro@5.16.11(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1))(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@astrojs/underscore-redirects': 1.0.0
       '@cloudflare/workers-types': 4.20251126.0
-      astro: 5.16.10(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.16.11(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1)
       tinyglobby: 0.2.15
       vite: 6.4.1(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1)
       wrangler: 4.50.0(@cloudflare/workers-types@4.20251126.0)
@@ -4008,7 +4008,7 @@ snapshots:
 
   '@capsizecss/unpack@4.0.0':
     dependencies:
-      fontkitten: 1.0.1
+      fontkitten: 1.0.2
 
   '@cloudflare/kv-asset-handler@0.4.0':
     dependencies:
@@ -5032,7 +5032,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@5.16.10(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1):
+  astro@5.16.11(@types/node@25.0.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5
@@ -5968,9 +5968,9 @@ snapshots:
 
   fontace@0.4.0:
     dependencies:
-      fontkitten: 1.0.1
+      fontkitten: 1.0.2
 
-  fontkitten@1.0.1:
+  fontkitten@1.0.2:
     dependencies:
       tiny-inflate: 1.0.3
 
