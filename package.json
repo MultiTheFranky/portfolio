@@ -40,7 +40,7 @@
         "@types/react": "^19.0.0",
         "@types/react-dom": "^19.0.0",
         "@types/react-vertical-timeline-component": "^3.3.6",
-        "astro": "^5.13.8",
+        "astro": "^6.0.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-vertical-timeline-component": "^3.6.0",
