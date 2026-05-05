@@ -43,7 +43,7 @@
         "astro": "^5.13.8",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
-        "react-vertical-timeline-component": "^3.6.0",
+        "react-vertical-timeline-component": "^4.0.0",
         "tailwindcss": "^4.1.13"
     },
     "devDependencies": {
