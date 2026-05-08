@@ -14,9 +14,9 @@ jobs:
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v6
               with:
-                  version: 10
+                  version: 11
             - run: pnpm install --no-frozen-lockfile
             - run: pnpm run lint
     test:
@@ -27,9 +27,9 @@ jobs:
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v6
               with:
-                  version: 10
+                  version: 11
             - run: pnpm install --no-frozen-lockfile
             - name: Install Playwright browsers
               run: pnpm exec playwright install --with-deps
@@ -50,8 +50,8 @@ jobs:
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v6
               with:
-                  version: 10
+                  version: 11
             - run: pnpm install --no-frozen-lockfile
             - run: pnpm run typecheck

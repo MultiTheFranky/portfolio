@@ -2,13 +2,14 @@ packages:
   - .
 
 allowBuilds:
-  esbuild: set this to true or false
-  react-vertical-timeline-component: set this to true or false
-  sharp: set this to true or false
-  workerd: set this to true or false
+  esbuild: true
+  react-vertical-timeline-component: true
+  sharp: true
+  workerd: true
 
 onlyBuiltDependencies:
-  - esbuild
+  - esbuild@0.27.3
+  - esbuild@0.27.7
   - react-vertical-timeline-component
-  - sharp
-  - workerd
+  - sharp@0.34.5
+  - workerd@1.20260507.1

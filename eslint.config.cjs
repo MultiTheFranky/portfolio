@@ -43,7 +43,10 @@ module.exports = [
             {},
             airbnbBase.rules || {},
             airbnbTs.rules || {},
-            prettierConfig.rules || {}
+            prettierConfig.rules || {},
+            {
+                "react/jsx-filename-extension": "off"
+            }
         )
     },
 

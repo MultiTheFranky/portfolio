@@ -1,5 +1,8 @@
-﻿import type { CSSProperties, FC } from "react";
-import timeline from "react-vertical-timeline-component";
+import type { CSSProperties, FC } from "react";
+import {
+    VerticalTimeline,
+    VerticalTimelineElement
+} from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
 export type TimelineEntry = {
@@ -31,8 +34,6 @@ const iconStyle: CSSProperties = {
     color: "var(--timeline-icon-color)",
     boxShadow: "var(--timeline-icon-shadow)"
 };
-
-const { VerticalTimeline, VerticalTimelineElement } = timeline;
 
 const TimelineVertical: FC<TimelineVerticalProps> = ({ entries }) => (
     <VerticalTimeline

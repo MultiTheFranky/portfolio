@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/tailwind.css";
@@ -37,7 +36,6 @@ const { title } = Astro.props;
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
-        <ViewTransitions />
     </head>
     <body class="h-full overflow-x-hidden">
         <!-- Animated Background -->
