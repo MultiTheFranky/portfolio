@@ -1,8 +1,15 @@
 packages:
-    - .
+  - .
+
+allowBuilds:
+  esbuild: true
+  react-vertical-timeline-component: true
+  sharp: true
+  workerd: true
 
 onlyBuiltDependencies:
-    - esbuild
-    - react-vertical-timeline-component
-    - sharp
-    - workerd
+  - esbuild@0.27.3
+  - esbuild@0.27.7
+  - react-vertical-timeline-component
+  - sharp@0.34.5
+  - workerd@1.20260507.1
