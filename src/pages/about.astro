@@ -1,43 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-type Social = {
-    name: string;
-    icon: string;
-    link: string;
-};
+import aboutImage from "../assets/about.png";
+import { SITE, socials } from "../data/site";
 
-const socials: Social[] = [
-    {
-        name: "Github",
-        icon: "/socials/github.svg",
-        link: "https://github.com/multithefranky"
-    },
-    {
-        name: "Linkedin",
-        icon: "/socials/linkedin.svg",
-        link: "https://www.linkedin.com/in/franciscoalamogarcia/"
-    },
-    {
-        name: "X",
-        icon: "/socials/x.svg",
-        link: "https://x.com/multithefranky"
-    },
-    {
-        name: "Instagram",
-        icon: "/socials/instagram.svg",
-        link: "https://www.instagram.com/multithefranky/"
-    },
-    {
-        name: "Twitch",
-        icon: "/socials/twitch.svg",
-        link: "https://www.twitch.tv/frankyscripter"
-    },
-    {
-        name: "Youtube",
-        icon: "/socials/youtube.svg",
-        link: "https://www.youtube.com/channel/UCWWoFj78QojfXnCv4fNddVg"
-    }
-];
+export const prerender = true;
 ---
 
 <style>
@@ -96,18 +63,27 @@ const socials: Social[] = [
         }
     }
 </style>
-<Layout title="About">
-    <main class="grid h-full place-items-center px-6 py-12 sm:py-20 lg:px-8">
+<Layout
+    title="About Francisco Álamo García | MultiTheFranky"
+    description="About Francisco “Franky” Álamo García: Software Engineer from Santander, Spain, Computer Science at the University of Cantabria, working at Incentro. Find me on GitHub, LinkedIn, X, Twitch and YouTube."
+>
+    <div class="grid h-full place-items-center px-6 py-12 sm:py-20 lg:px-8">
         <div class="w-full max-w-3xl">
             <section
                 class="bg-transparent rounded-lg overflow-hidden flex flex-col sm:flex-row items-stretch gap-4 reveal profile-card"
                 style="--delay:0ms"
             >
                 <div
-                    class="profile-image h-48 sm:h-auto sm:w-48 flex-none bg-cover rounded-t sm:rounded-t-none sm:rounded-l text-center overflow-hidden"
-                    style="background-image: url('/about.png')"
-                    title="MultiTheFranky"
+                    class="profile-image h-72 sm:h-auto sm:w-56 flex-none rounded-t sm:rounded-t-none sm:rounded-l overflow-hidden"
                 >
+                    <Image
+                        src={aboutImage}
+                        alt={`Portrait of ${SITE.author}`}
+                        width={448}
+                        loading="eager"
+                        fetchpriority="high"
+                        class="h-full w-full object-cover object-top"
+                    />
                 </div>
 
                 <div class="p-4 flex flex-col justify-between leading-normal">
@@ -123,7 +99,7 @@ const socials: Social[] = [
                                 style="animation-delay: 0.4s"
                                 aria-hidden="true">Franky</span
                             >
-                            <span class="sr-only">Franky</span>
+                            <span class="sr-only">“Franky”</span>
                             <span
                                 class="inline name-reveal"
                                 style="animation-delay: 0.6s"
@@ -132,17 +108,23 @@ const socials: Social[] = [
                             >
                         </h1>
                         <p class="text-base bio-text">
-                            Born in Santander, Spain, in 1997. I've studied
-                            computer science at the University of Cantabria. I
-                            am passionate about technology and I love to learn
-                            new things. I am a very curious person and I like to
-                            know about everything. Working for Incentro.
-                            Grandvision support team and Casashops support and
-                            developer.
+                            Born in Santander, Spain, in 1997, I studied
+                            Computer Science at the University of Cantabria. I'm
+                            passionate about technology, endlessly curious and
+                            always learning something new. Today I work as a
+                            Software Engineer at Incentro, supporting the
+                            GrandVision team and building and maintaining the
+                            Casashops platform.
                         </p>
                         <p class="text-base mt-6 italic quote-text">
                             "Jack of all trades, master of some"
                         </p>
+                        <a
+                            href={`mailto:${SITE.email}`}
+                            class="about-cta mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+                        >
+                            Say hello →
+                        </a>
                     </div>
                 </div>
             </section>
@@ -151,7 +133,7 @@ const socials: Social[] = [
                 <h2
                     class="text-center text-3xl sm:text-4xl font-semibold leading-8 section-title"
                 >
-                    Social
+                    Find me online
                 </h2>
                 <div
                     class="mx-auto mt-6 grid max-w-lg grid-cols-3 sm:grid-cols-6 gap-6 items-center justify-items-center"
@@ -446,23 +428,27 @@ const socials: Social[] = [
                 color: #00b1bb;
             }
 
-            /* re-use reveal styles similar to timeline */
-            .reveal {
+            .about-cta {
+                background: linear-gradient(135deg, #00838a, #0d0950);
+                box-shadow: 0 10px 25px rgba(0, 177, 187, 0.3);
+                transition: transform 0.2s ease;
+            }
+
+            .about-cta:hover {
+                transform: translateY(-2px);
+            }
+
+            /* re-use reveal styles similar to timeline (hidden only with JS) */
+            :global(.js) .reveal {
                 opacity: 0;
                 transform: translateY(10px) scale(0.995);
                 transition:
                     opacity 520ms cubic-bezier(0.2, 0.9, 0.2, 1) var(--delay),
                     transform 520ms cubic-bezier(0.2, 0.9, 0.2, 1) var(--delay);
             }
-            .reveal.in-view {
+            :global(.js) .reveal.in-view {
                 opacity: 1;
                 transform: translateY(0) scale(1);
-            }
-
-            /* subtle hover accessibility */
-            a[rel~="noopener"]:focus {
-                outline: 2px solid rgba(59, 130, 246, 0.4);
-                outline-offset: 2px;
             }
 
             @media (max-width: 639px) {
@@ -500,5 +486,5 @@ const socials: Social[] = [
                 }
             }
         </script>
-    </main>
+    </div>
 </Layout>

@@ -1,10 +1,14 @@
 ---
+import Hero from "../components/Hero.astro";
 import Knowledge from "../components/Knowledge.astro";
 import Timeline from "../components/Timeline.astro";
 import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
 ---
 
-<Layout title="MultiTheFranky">
+<Layout title="Francisco Álamo · Software Engineer | MultiTheFranky">
+    <Hero />
     <Timeline />
     <Knowledge />
 </Layout>

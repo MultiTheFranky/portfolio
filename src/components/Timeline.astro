@@ -15,32 +15,52 @@ const timelineEntries: TimelineEntry[] = [
         icon: "💻"
     },
     {
-        title: "Start of high school",
+        title: "University",
         date: "2015",
         description:
-            "I went to high school and started studying Computer Science on UNICAN (University of Cantabria).",
+            "I started studying Computer Science at UNICAN (University of Cantabria).",
         icon: "🎓"
     },
     {
         title: "First job",
         date: "2019",
         description:
-            "I started working as a Software Engineer at Incentro. Working for multiples clients like Grandvision (EssilorLuxottica) and Casashops.",
+            "I started working as a Software Engineer at Incentro. Working for multiple clients like Grandvision (EssilorLuxottica) and Casashops.",
         icon: "💼"
     }
 ];
 ---
 
-<main class="timeline-surface mx-auto max-w-7xl px-6 lg:px-8 mb-16 mt-16">
-    <h1
-        class="text-center text-2xl font-semibold leading-8 mb-8 mt-32 timeline-title"
+<section
+    id="timeline"
+    class="timeline-surface mx-auto max-w-7xl px-6 lg:px-8 mb-16 mt-16"
+    aria-labelledby="timeline-title"
+>
+    <p class="section-eyebrow">My journey</p>
+    <h2
+        id="timeline-title"
+        class="text-center text-3xl sm:text-4xl font-bold leading-tight mb-10 timeline-title"
     >
         Timeline
-    </h1>
+    </h2>
 
     <TimelineVertical client:load entries={timelineEntries} />
 
     <style>
+        .section-eyebrow {
+            margin-top: 6rem;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #00838a;
+        }
+
+        :global(.dark) .section-eyebrow {
+            color: #2dd4bf;
+        }
+
         .timeline-title {
             opacity: 0;
             animation: title-reveal 0.8s ease-out 0.2s forwards;
@@ -84,7 +104,7 @@ const timelineEntries: TimelineEntry[] = [
             --timeline-card-bg: rgba(15, 23, 42, 0.92);
             --timeline-card-border: rgba(148, 163, 184, 0.3);
             --timeline-card-text: #f1f5f9;
-            --timeline-card-muted: #cbd5f5;
+            --timeline-card-muted: #cbd5e1;
             --timeline-card-shadow: 0 26px 55px rgba(15, 23, 42, 0.5);
             --timeline-icon-bg: linear-gradient(135deg, #1e3a8a, #0ea5e9);
             --timeline-icon-color: #f8fafc;
@@ -167,27 +187,29 @@ const timelineEntries: TimelineEntry[] = [
             padding: 1.75rem 2rem !important;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             position: relative;
-            overflow: hidden;
         }
 
+        /* Shimmer sweep without overflow: hidden, which would clip the date
+           the timeline library positions outside the card on wide screens. */
         :global(.timeline-surface .timeline-card::before) {
             content: "";
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
             background: linear-gradient(
                 90deg,
-                transparent,
-                rgba(0, 177, 187, 0.1),
-                transparent
+                transparent 30%,
+                rgba(0, 177, 187, 0.12) 50%,
+                transparent 70%
             );
-            transition: left 0.5s ease;
+            background-size: 250% 100%;
+            background-position: 100% 0;
+            transition: background-position 0.6s ease;
         }
 
         :global(.timeline-surface .timeline-card:hover::before) {
-            left: 100%;
+            background-position: 0% 0;
         }
 
         :global(.timeline-surface .timeline-card:hover) {
@@ -214,12 +236,17 @@ const timelineEntries: TimelineEntry[] = [
         }
 
         :global(.timeline-surface .timeline-date) {
-            color: var(--timeline-card-muted);
+            color: #00838a;
             display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
             margin-top: 1.25rem;
+            opacity: 1 !important;
+        }
+
+        :global(.dark .timeline-surface .timeline-date) {
+            color: #2dd4bf;
         }
 
         @media (max-width: 1023px) {
@@ -228,4 +255,4 @@ const timelineEntries: TimelineEntry[] = [
             }
         }
     </style>
-</main>
+</section>
