@@ -5,7 +5,7 @@ export const prerender = true;
 
 const routes = [
     { path: "/", priority: "1.0" },
-    { path: "/about", priority: "0.8" }
+    { path: "/about/", priority: "0.8" }
 ];
 
 export const GET: APIRoute = ({ site }) => {

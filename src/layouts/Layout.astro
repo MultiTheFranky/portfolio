@@ -15,7 +15,10 @@ interface Props {
 const { title, description = SITE.description, noindex = false } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL(SITE.url);
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+// Production serves pages as directories (/about → 308 → /about/), so the
+// canonical URL always ends with a slash, regardless of how it was requested
+const canonicalPath = Astro.url.pathname.replace(/\/?$/, "/");
+const canonicalUrl = new URL(canonicalPath, siteUrl).href;
 const ogImage = await getImage({
     src: aboutImage,
     width: 630,

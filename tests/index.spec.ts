@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { visibleThemeToggle } from "./helpers";
 
 test.describe("Home page", () => {
     test("correct index structure", async ({ page }) => {
@@ -39,7 +40,7 @@ test.describe("Home page", () => {
         const wasDark = await html.evaluate((el) =>
             el.classList.contains("dark")
         );
-        await page.locator("#themeToggle").click();
+        await visibleThemeToggle(page).click();
         await expect(html).toHaveClass(wasDark ? /^(?!.*dark)/ : /dark/);
     });
 
