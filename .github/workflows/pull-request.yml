@@ -22,7 +22,7 @@ jobs:
                   node-version: 24
             - uses: pnpm/action-setup@v6
               with:
-                  version: 11
+                  version: 12
             - run: pnpm install --no-frozen-lockfile
             - run: pnpm run lint
     format:
@@ -34,7 +34,7 @@ jobs:
                   node-version: 24
             - uses: pnpm/action-setup@v6
               with:
-                  version: 11
+                  version: 12
             - run: pnpm install --no-frozen-lockfile
             - run: pnpm run format:check
     build:
@@ -46,7 +46,7 @@ jobs:
                   node-version: 24
             - uses: pnpm/action-setup@v6
               with:
-                  version: 11
+                  version: 12
             - run: pnpm install --no-frozen-lockfile
             # Build exactly what Cloudflare Pages deploys (with the adapter)
             - name: Build with Cloudflare adapter
@@ -73,7 +73,7 @@ jobs:
                   node-version: 24
             - uses: pnpm/action-setup@v6
               with:
-                  version: 11
+                  version: 12
             - run: pnpm install --no-frozen-lockfile
             - name: Install Playwright browser
               run: |
@@ -102,7 +102,7 @@ jobs:
                   node-version: 24
             - uses: pnpm/action-setup@v6
               with:
-                  version: 11
+                  version: 12
             - run: pnpm install --no-frozen-lockfile
             - run: pnpm run typecheck
     # Single stable check to mark as required in branch protection, so the
