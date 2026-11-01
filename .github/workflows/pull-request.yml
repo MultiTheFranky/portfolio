@@ -1,20 +1,22 @@
 name: Pull Request
 on:
     pull_request:
-        types: [opened, reopened, synchronize, edited]
+        types: [opened, reopened, synchronize]
+    # Started by dependency-automerge.yml after it updates a Dependabot branch
+    workflow_dispatch:
 permissions:
     contents: read
     actions: write
 
 concurrency:
-    group: pr-${{ github.event.pull_request.number }}
+    group: pr-${{ github.event.pull_request.number || github.ref }}
     cancel-in-progress: true
 
 jobs:
     lint:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
@@ -26,7 +28,7 @@ jobs:
     format:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
@@ -38,7 +40,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
@@ -65,7 +67,7 @@ jobs:
         name: test (${{ matrix.project }})
         steps:
             - name: Checkout
-              uses: actions/checkout@v6
+              uses: actions/checkout@v7
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
@@ -94,7 +96,7 @@ jobs:
     typecheck:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
