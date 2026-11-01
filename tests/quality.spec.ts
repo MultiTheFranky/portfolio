@@ -106,6 +106,8 @@ for (const { path, name } of PAGES) {
             test(`has no accessibility violations (${theme})`, async ({
                 page
             }) => {
+                // axe can take a while on the first scan, especially in WebKit
+                test.slow();
                 await page.emulateMedia({
                     colorScheme: theme,
                     reducedMotion: "reduce"

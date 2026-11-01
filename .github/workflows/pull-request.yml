@@ -1,13 +1,15 @@
 name: Pull Request
 on:
     pull_request:
-        types: [opened, reopened, synchronize, edited]
+        types: [opened, reopened, synchronize]
+    # Started by dependency-automerge.yml after it updates a Dependabot branch
+    workflow_dispatch:
 permissions:
     contents: read
     actions: write
 
 concurrency:
-    group: pr-${{ github.event.pull_request.number }}
+    group: pr-${{ github.event.pull_request.number || github.ref }}
     cancel-in-progress: true
 
 jobs:

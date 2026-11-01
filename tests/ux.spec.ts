@@ -132,7 +132,11 @@ test.describe("Reduced motion", () => {
         await expect(
             page.getByRole("heading", { level: 1, name: /Francisco/ })
         ).toBeVisible();
-        await page.locator("#knowledge").scrollIntoViewIfNeeded();
+        // scrollIntoViewIfNeeded() waits for the section to be stable, which
+        // never happens in WebKit (Playwright 1.64+) because of its animations
+        await page
+            .locator("#knowledge")
+            .evaluate((el) => el.scrollIntoView({ block: "center" }));
         await expect
             .poll(() =>
                 page.evaluate(

@@ -33,18 +33,37 @@ jobs:
               run: gh pr merge "$PR_URL" --auto --squash
 
     # Branch protection requires PRs to be up to date with master. Renovate
-    # rebases its own PRs; Dependabot needs to be asked.
-    rebase-dependabot:
+    # rebases its own PRs; Dependabot only rebases on conflicts, so update its
+    # branches here. Pushes made with GITHUB_TOKEN don't trigger workflows, so
+    # start the PR checks explicitly afterwards.
+    update-dependabot:
         if: github.event_name == 'push'
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+            actions: write
         env:
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         steps:
-            - name: Ask Dependabot to rebase PRs that fell behind
+            - name: Update Dependabot PRs that fell behind master
               run: |
                   gh pr list --repo "$GITHUB_REPOSITORY" --author "app/dependabot" --state open \
-                    --json number,mergeStateStatus \
-                    --jq '.[] | select(.mergeStateStatus == "BEHIND") | .number' |
-                  while read -r number; do
-                    gh pr comment "$number" --repo "$GITHUB_REPOSITORY" --body "@dependabot rebase"
+                    --json number,headRefName,headRefOid,autoMergeRequest \
+                    --jq '.[] | select(.autoMergeRequest != null) | "\(.number) \(.headRefName) \(.headRefOid)"' |
+                  while read -r number branch head; do
+                    behind=$(gh api "repos/$GITHUB_REPOSITORY/compare/$head...$GITHUB_SHA" --jq .ahead_by)
+                    [ "$behind" -gt 0 ] || continue
+
+                    if ! gh pr update-branch "$number" --repo "$GITHUB_REPOSITORY"; then
+                      echo "::warning::#$number could not be updated (conflicts?)"
+                      continue
+                    fi
+                    # update-branch is asynchronous; wait for the new head commit
+                    for _ in $(seq 1 30); do
+                      new_head=$(gh pr view "$number" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq .headRefOid)
+                      [ "$new_head" != "$head" ] && break
+                      sleep 2
+                    done
+                    gh workflow run pull-request.yml --repo "$GITHUB_REPOSITORY" --ref "$branch"
                   done
