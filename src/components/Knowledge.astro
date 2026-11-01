@@ -11,50 +11,46 @@ import { knowledgeGroups, type MainKnowledge } from "../data/site";
     >
         Knowledge
     </h2>
-    {
-        knowledgeGroups.map(
-            (mainKnowledge: MainKnowledge, sectionIndex: number) => (
-                <div
-                    class={`mx-auto max-w-7xl px-6 lg:px-8 scroll-reveal`}
-                    style={`transition-delay: ${sectionIndex * 150}ms`}
-                >
-                    <h3 class="text-center text-xl font-semibold leading-8 mt-10 gradient-text-subtle">
-                        {mainKnowledge.name}
-                    </h3>
-                    <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-                        {mainKnowledge.knowledge.map(
-                            (item, itemIndex: number) => (
-                                <a
-                                    href={item.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={`${item.name} (opens in a new tab)`}
-                                    class="skill-card-wrapper flex flex-col items-center group"
-                                    style={`animation-delay: ${sectionIndex * 200 + itemIndex * 50}ms`}
-                                >
-                                    <div class="skill-icon-container relative">
-                                        <div class="skill-icon-glow" />
-                                        <Image
-                                            src={item.icon}
-                                            alt=""
-                                            width={48}
-                                            height={48}
-                                            class={`skill-icon h-12 w-12 rounded-md object-contain shadow-sm ${item.inverted ? "invert-on-dark" : ""}`}
-                                            loading="lazy"
-                                            decoding="async"
-                                        />
-                                    </div>
-                                    <span class="mt-2 text-sm font-medium skill-name">
-                                        {item.name}
-                                    </span>
-                                </a>
-                            )
-                        )}
-                    </div>
+    {knowledgeGroups.map(
+        (mainKnowledge: MainKnowledge, sectionIndex: number) => (
+            <div
+                class={`mx-auto max-w-7xl px-6 lg:px-8 scroll-reveal`}
+                style={`transition-delay: ${sectionIndex * 150}ms`}
+            >
+                <h3 class="text-center text-xl font-semibold leading-8 mt-10 gradient-text-subtle">
+                    {mainKnowledge.name}
+                </h3>
+                <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                    {mainKnowledge.knowledge.map((item, itemIndex: number) => (
+                        <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${item.name} (opens in a new tab)`}
+                            class="skill-card-wrapper flex flex-col items-center group"
+                            style={`animation-delay: ${sectionIndex * 200 + itemIndex * 50}ms`}
+                        >
+                            <div class="skill-icon-container relative">
+                                <div class="skill-icon-glow" />
+                                <Image
+                                    src={item.icon}
+                                    alt=""
+                                    width={48}
+                                    height={48}
+                                    class={`skill-icon h-12 w-12 rounded-md object-contain shadow-sm ${item.inverted ? "invert-on-dark" : ""}`}
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </div>
+                            <span class="mt-2 text-sm font-medium skill-name">
+                                {item.name}
+                            </span>
+                        </a>
+                    ))}
                 </div>
-            )
+            </div>
         )
-    }
+    )}
 
     <style>
         .section-eyebrow {

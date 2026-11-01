@@ -226,17 +226,13 @@ const isCurrent = (href: string) => href === currentPath;
 </style>
 
 <nav class="header-glass sticky top-0 z-50" aria-label="Main navigation">
-    <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3 sm:p-4"
-    >
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3 sm:p-4">
         <a
             href="/"
             class="flex items-center logo-container"
             aria-label={`${SITE.name} — home`}
         >
-            <span
-                class="sm:mx-4 text-3xl sm:text-5xl lg:text-6xl text-gray-500 dark:text-gray-300 font-semibold tracking-tight"
-            >
+            <span class="sm:mx-4 text-3xl sm:text-5xl lg:text-6xl text-gray-500 dark:text-gray-300 font-semibold tracking-tight">
                 MultiThe<span class="text-gradient">Franky</span>
             </span>
         </a>
@@ -262,40 +258,38 @@ const isCurrent = (href: string) => href === currentPath;
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M1 1h15M1 7h15M1 13h15"></path>
+                        d="M1 1h15M1 7h15M1 13h15"
+                    ></path>
                 </svg>
             </button>
         </div>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul
-                class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-200 dark:border-white/10 rounded-lg md:flex-row md:items-center md:space-x-8 md:mt-0 md:border-0"
-            >
-                {
-                    navLinks.map((link) => (
-                        <li class="nav-item">
-                            <a
-                                href={link.href}
-                                class:list={[
-                                    "nav-link block py-2 pl-3 pr-4 rounded md:p-0 hover:bg-gray-100 md:hover:bg-transparent dark:hover:bg-white/10 md:dark:hover:bg-transparent",
-                                    isCurrent(link.href)
-                                        ? "text-[#00838a] dark:text-[#00d4df] font-semibold"
-                                        : "text-gray-900 dark:text-white"
-                                ]}
-                                aria-current={
-                                    isCurrent(link.href) ? "page" : undefined
-                                }
-                            >
-                                {link.label}
-                            </a>
-                        </li>
-                    ))
-                }
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-200 dark:border-white/10 rounded-lg md:flex-row md:items-center md:space-x-8 md:mt-0 md:border-0">
+                {navLinks.map((link) => (
+                    <li class="nav-item">
+                        <a
+                            href={link.href}
+                            class:list={[
+                                "nav-link block py-2 pl-3 pr-4 rounded md:p-0 hover:bg-gray-100 md:hover:bg-transparent dark:hover:bg-white/10 md:dark:hover:bg-transparent",
+                                isCurrent(link.href)
+                                    ? "text-[#00838a] dark:text-[#00d4df] font-semibold"
+                                    : "text-gray-900 dark:text-white"
+                            ]}
+                            aria-current={
+                                isCurrent(link.href) ? "page" : undefined
+                            }
+                        >
+                            {link.label}
+                        </a>
+                    </li>
+                ))}
                 <li class="nav-item">
                     <a
                         href={`mailto:${SITE.email}`}
                         class="contact-pill inline-block mt-2 md:mt-0 px-4 py-2 rounded-full text-sm font-semibold text-white"
-                        >Contact</a
                     >
+                        Contact
+                    </a>
                 </li>
                 <li class="nav-item hidden md:list-item">
                     <ThemeIcon />
