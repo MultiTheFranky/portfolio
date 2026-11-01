@@ -43,10 +43,9 @@ const heroSocials = socials.filter((social) =>
                 class="hero-in mt-6 text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl"
                 style="--d: 100ms"
             >
-                <span
-                    class="block text-lg font-semibold tracking-normal text-[var(--fg-muted)] sm:text-xl"
-                    >Hi, I'm</span
-                >
+                <span class="block text-lg font-semibold tracking-normal text-[var(--fg-muted)] sm:text-xl">
+                    Hi, I'm
+                </span>
                 Francisco <span class="hero-gradient">“Franky”</span> Álamo
             </h1>
 
@@ -56,8 +55,10 @@ const heroSocials = socials.filter((social) =>
             >
                 <span class="sr-only">{SITE.jobTitle}</span>
                 <span aria-hidden="true">
-                    <span id="typed-role" class="typed-role">{roles[0]}</span
-                    ><span class="caret">|</span>
+                    <span id="typed-role" class="typed-role">
+                        {roles[0]}
+                    </span>
+                    <span class="caret">|</span>
                 </span>
             </p>
 
@@ -66,10 +67,9 @@ const heroSocials = socials.filter((social) =>
                 style="--d: 300ms"
             >
                 I build fast, accessible web experiences and the cloud plumbing
-                behind them. Currently at <strong class="text-[var(--fg)]"
-                    >Incentro</strong
-                >, shipping e-commerce platforms for brands like GrandVision and
-                Casashops.
+                behind them. Currently at{" "}
+                <strong class="text-[var(--fg)]">Incentro</strong>, shipping
+                e-commerce platforms for brands like GrandVision and Casashops.
             </p>
 
             <div
@@ -88,30 +88,31 @@ const heroSocials = socials.filter((social) =>
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        ><path d="M5 12h14M13 5l7 7-7 7"></path></svg
                     >
+                        <path d="M5 12h14M13 5l7 7-7 7"></path>
+                    </svg>
                 </a>
-                <a href="/about" class="btn-secondary">More about me</a>
+                <a href="/about" class="btn-secondary">
+                    More about me
+                </a>
                 <div class="flex items-center gap-3">
-                    {
-                        heroSocials.map((social) => (
-                            <a
-                                href={social.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="social-chip"
-                                aria-label={`${social.name} (opens in a new tab)`}
-                            >
-                                <img
-                                    src={social.icon}
-                                    alt=""
-                                    width="22"
-                                    height="22"
-                                    class="dark:invert"
-                                />
-                            </a>
-                        ))
-                    }
+                    {heroSocials.map((social) => (
+                        <a
+                            href={social.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social-chip"
+                            aria-label={`${social.name} (opens in a new tab)`}
+                        >
+                            <img
+                                src={social.icon}
+                                alt=""
+                                width="22"
+                                height="22"
+                                class="dark:invert"
+                            />
+                        </a>
+                    ))}
                 </div>
             </div>
 
@@ -119,18 +120,16 @@ const heroSocials = socials.filter((social) =>
                 class="hero-in mt-12 grid max-w-lg grid-cols-3 gap-4 mx-auto lg:mx-0"
                 style="--d: 500ms"
             >
-                {
-                    stats.map((stat) => (
-                        <div class="stat-card">
-                            <dt class="text-xs font-medium uppercase tracking-wider text-[var(--fg-muted)]">
-                                {stat.label}
-                            </dt>
-                            <dd class="stat-value order-first text-3xl font-extrabold sm:text-4xl">
-                                {stat.value}
-                            </dd>
-                        </div>
-                    ))
-                }
+                {stats.map((stat) => (
+                    <div class="stat-card">
+                        <dt class="text-xs font-medium uppercase tracking-wider text-[var(--fg-muted)]">
+                            {stat.label}
+                        </dt>
+                        <dd class="stat-value order-first text-3xl font-extrabold sm:text-4xl">
+                            {stat.value}
+                        </dd>
+                    </div>
+                ))}
             </dl>
         </div>
 
@@ -149,49 +148,46 @@ const heroSocials = socials.filter((social) =>
                 />
             </div>
             <ul class="orbit" aria-hidden="true">
-                {
-                    orbitSkills.map((skill, index) => (
-                        <li class="orbit-item" style={`--i: ${index}`}>
-                            <img
-                                src={skill.icon}
-                                alt=""
-                                width="28"
-                                height="28"
-                                loading="lazy"
-                            />
-                        </li>
-                    ))
-                }
+                {orbitSkills.map((skill, index) => (
+                    <li class="orbit-item" style={`--i: ${index}`}>
+                        <img
+                            src={skill.icon}
+                            alt=""
+                            width="28"
+                            height="28"
+                            loading="lazy"
+                        />
+                    </li>
+                ))}
             </ul>
         </div>
     </div>
 
     <a href="#timeline" class="scroll-cue" aria-label="Scroll to timeline">
-        <span class="mouse" aria-hidden="true"><span class="wheel"></span></span
-        >
+        <span class="mouse" aria-hidden="true">
+            <span class="wheel"></span>
+        </span>
     </a>
 </section>
 
 <section class="marquee" aria-label="Technologies I work with">
     <ul class="marquee-track">
-        {
-            [...allSkills, ...allSkills].map((skill, index) => (
-                <li
-                    class="marquee-item"
-                    aria-hidden={index >= allSkills.length ? "true" : undefined}
-                >
-                    <img
-                        src={skill.icon}
-                        alt=""
-                        width="28"
-                        height="28"
-                        loading="lazy"
-                        class={skill.inverted ? "invert-on-dark" : ""}
-                    />
-                    <span>{skill.name}</span>
-                </li>
-            ))
-        }
+        {[...allSkills, ...allSkills].map((skill, index) => (
+            <li
+                class="marquee-item"
+                aria-hidden={index >= allSkills.length ? "true" : undefined}
+            >
+                <img
+                    src={skill.icon}
+                    alt=""
+                    width="28"
+                    height="28"
+                    loading="lazy"
+                    class={skill.inverted ? "invert-on-dark" : ""}
+                />
+                <span>{skill.name}</span>
+            </li>
+        ))}
     </ul>
 </section>
 
