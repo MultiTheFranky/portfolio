@@ -1,21 +1,124 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { getImage } from "astro:assets";
+import aboutImage from "../assets/about.png";
+import { SITE, socials } from "../data/site";
 import "../styles/tailwind.css";
 
 interface Props {
     title: string;
+    description?: string;
+    noindex?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, description = SITE.description, noindex = false } = Astro.props;
+
+const siteUrl = Astro.site ?? new URL(SITE.url);
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = await getImage({
+    src: aboutImage,
+    width: 630,
+    format: "jpeg"
+});
+const ogImageWidth = String(ogImage.attributes.width ?? 630);
+const ogImageHeight = String(ogImage.attributes.height ?? 832);
+const ogImageUrl = new URL(ogImage.src, siteUrl).href;
+
+const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE.author,
+    alternateName: ["Franky", SITE.name],
+    jobTitle: SITE.jobTitle,
+    url: siteUrl.href,
+    email: `mailto:${SITE.email}`,
+    image: ogImageUrl,
+    worksFor: { "@type": "Organization", name: "Incentro" },
+    alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "University of Cantabria"
+    },
+    address: {
+        "@type": "PostalAddress",
+        addressLocality: "Santander",
+        addressCountry: "ES"
+    },
+    sameAs: socials.map((social) => social.link)
+};
 ---
 
 <!doctype html>
 <html lang="en" class="noise-overlay">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content="MultiTheFranky portfolio" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="author" content={SITE.author} />
+        <link rel="canonical" href={canonicalUrl} />
+        {noindex && <meta name="robots" content="noindex, follow" />}
+        <link rel="sitemap" href="/sitemap.xml" />
+
+        <!-- Open Graph / Twitter -->
+        <meta property="og:type" content="profile" />
+        <meta property="og:site_name" content={SITE.name} />
+        <meta property="og:locale" content={SITE.locale} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:width" content={ogImageWidth} />
+        <meta property="og:image:height" content={ogImageHeight} />
+        <meta property="og:image:alt" content={`Portrait of ${SITE.author}`} />
+        <meta property="profile:first_name" content="Francisco" />
+        <meta property="profile:last_name" content="Álamo García" />
+        <meta property="profile:username" content={SITE.name} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content={SITE.twitter} />
+        <meta name="twitter:creator" content={SITE.twitter} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+
+        <meta
+            name="theme-color"
+            content="#f8fafc"
+            media="(prefers-color-scheme: light)"
+        />
+        <meta
+            name="theme-color"
+            content="#0d0950"
+            media="(prefers-color-scheme: dark)"
+        />
+
+        <!-- Apply the theme before first paint to avoid a light/dark flash -->
+        <script is:inline>
+            (() => {
+                const root = document.documentElement;
+                root.classList.add("js");
+                let theme = null;
+                try {
+                    theme = localStorage.getItem("theme");
+                } catch {
+                    theme = null;
+                }
+                if (!theme) {
+                    theme = window.matchMedia("(prefers-color-scheme: dark)")
+                        .matches
+                        ? "dark"
+                        : "light";
+                }
+                root.classList.toggle("dark", theme === "dark");
+            })();
+        </script>
+
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(personSchema)}
+        />
+
         <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -35,11 +138,12 @@ const { title } = Astro.props;
         />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
     </head>
     <body class="h-full overflow-x-hidden">
+        <a href="#main-content" class="skip-link">Skip to content</a>
+
         <!-- Animated Background -->
-        <div class="animated-bg"></div>
+        <div class="animated-bg" aria-hidden="true"></div>
 
         <!-- Floating Particles -->
         <div class="particles-container" aria-hidden="true">
@@ -54,10 +158,12 @@ const { title } = Astro.props;
         </div>
 
         <!-- Cursor Glow Effect -->
-        <div class="cursor-glow" id="cursor-glow"></div>
+        <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
         <Header />
-        <slot />
+        <main id="main-content" tabindex="-1">
+            <slot />
+        </main>
         <Footer />
 
         <style>
@@ -259,59 +365,45 @@ const { title } = Astro.props;
         </style>
 
         <script>
-            const setDarkMode = () => {
-                const theme: string = (() => {
-                    if (
-                        typeof localStorage !== "undefined" &&
-                        localStorage.getItem("theme")
-                    ) {
-                        return localStorage.getItem("theme") as string;
-                    }
-                    if (
-                        window.matchMedia("(prefers-color-scheme: dark)")
-                            .matches
-                    ) {
-                        return "dark";
-                    }
-                    return "light";
-                })();
-
-                if (theme === "light") {
-                    document.documentElement.classList.remove("dark");
-                } else {
-                    document.documentElement.classList.add("dark");
-                }
-                window.localStorage.setItem("theme", theme);
-            };
-
-            // Cursor glow effect
+            // Cursor glow effect (mouse users only, paused while idle)
             const initCursorGlow = () => {
                 const cursorGlow = document.getElementById("cursor-glow");
                 if (!cursorGlow) return;
+                if (
+                    !window.matchMedia("(pointer: fine)").matches ||
+                    window.matchMedia("(prefers-reduced-motion: reduce)")
+                        .matches
+                ) {
+                    return;
+                }
 
-                let mouseX = 0,
-                    mouseY = 0;
-                let currentX = 0,
-                    currentY = 0;
+                let mouseX = 0;
+                let mouseY = 0;
+                let currentX = 0;
+                let currentY = 0;
+                let frame = 0;
+
+                const animate = () => {
+                    currentX += (mouseX - currentX) * 0.1;
+                    currentY += (mouseY - currentY) * 0.1;
+                    cursorGlow.style.left = `${currentX}px`;
+                    cursorGlow.style.top = `${currentY}px`;
+                    const settled =
+                        Math.abs(mouseX - currentX) < 0.5 &&
+                        Math.abs(mouseY - currentY) < 0.5;
+                    frame = settled ? 0 : requestAnimationFrame(animate);
+                };
 
                 document.addEventListener("mousemove", (e) => {
                     mouseX = e.clientX;
                     mouseY = e.clientY;
                     cursorGlow.style.opacity = "1";
+                    if (!frame) frame = requestAnimationFrame(animate);
                 });
 
                 document.addEventListener("mouseleave", () => {
                     cursorGlow.style.opacity = "0";
                 });
-
-                const animate = () => {
-                    currentX += (mouseX - currentX) * 0.1;
-                    currentY += (mouseY - currentY) * 0.1;
-                    cursorGlow.style.left = currentX + "px";
-                    cursorGlow.style.top = currentY + "px";
-                    requestAnimationFrame(animate);
-                };
-                animate();
             };
 
             // Scroll reveal animation
@@ -345,14 +437,11 @@ const { title } = Astro.props;
             };
 
             // Runs on initial navigation
-            setDarkMode();
             initCursorGlow();
             initScrollReveal();
 
             // Runs on view transitions navigation
             document.addEventListener("astro:after-swap", () => {
-                setDarkMode();
-                initCursorGlow();
                 initScrollReveal();
             });
         </script>

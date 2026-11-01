@@ -9,6 +9,8 @@ import tailwindcss from "@tailwindcss/vite";
 const isCI = !!process.env.CI || !!process.env.GITHUB_ACTIONS;
 
 const config = {
+    site: "https://multithefranky.com",
+    trailingSlash: "ignore",
     integrations: [react()],
     vite: {
         plugins: [tailwindcss()]
@@ -19,7 +21,9 @@ const config = {
 
 if (!isCI) {
     // Only attach the Cloudflare adapter when not in CI.
-    config.adapter = cloudflare();
+    // Pages are prerendered, so optimise images at build time with sharp
+    // instead of relying on a Cloudflare Images binding at runtime.
+    config.adapter = cloudflare({ imageService: "compile" });
 }
 
 export default defineConfig(config);

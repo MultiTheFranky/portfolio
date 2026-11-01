@@ -1,3 +1,7 @@
+---
+import { SITE } from "../data/site";
+---
+
 <footer class="m-4 footer-container">
     <div
         class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between footer-content"
@@ -5,22 +9,22 @@
         <span
             class="text-sm text-gray-500 sm:text-center dark:text-gray-400 footer-item"
             >© {new Date().getFullYear()}
-            <a
-                href="https://multithefranky.com/"
-                class="footer-link hover:underline">MultiTheFranky</a
-            >. All Rights Reserved.
+            <a href="/" class="footer-link hover:underline">{SITE.author}</a>.
+            All Rights Reserved.
         </span>
         <span
             class="text-sm text-gray-500 sm:text-center dark:text-gray-400 footer-item footer-heart"
-            >Made with <span class="heart-icon">❤️</span> by <a
-                href="https://github.com/multithefranky/"
-                class="footer-link hover:underline">MultiTheFranky</a
-            > in <a
+            >Made with <span class="heart-icon" role="img" aria-label="love"
+                >❤️</span
+            > using Astro · <a
                 href="https://github.com/MultiTheFranky/portfolio"
-                class="footer-link hover:underline">Github</a
-            >.
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link hover:underline">View source on GitHub</a
+            >
         </span>
         <ul
+            aria-label="Footer"
             class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
         >
             <li class="footer-item">
@@ -31,7 +35,7 @@
             </li>
             <li class="footer-item">
                 <a
-                    href="mailto:me@multithefranky.com"
+                    href={`mailto:${SITE.email}`}
                     class="footer-link hover:underline">Contact</a
                 >
             </li>
