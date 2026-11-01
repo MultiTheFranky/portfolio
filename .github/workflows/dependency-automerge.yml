@@ -1,0 +1,50 @@
+name: Dependency auto-merge
+# Approves and enables auto-merge on every Dependabot and Renovate PR, whatever
+# the version bump. GitHub only merges once the required checks pass.
+on:
+    pull_request:
+        types: [opened, reopened, synchronize, ready_for_review]
+    push:
+        branches: [master]
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    automerge:
+        if: >-
+            github.event_name == 'pull_request' &&
+            !github.event.pull_request.draft &&
+            contains(fromJSON('["dependabot[bot]", "renovate[bot]"]'), github.event.pull_request.user.login)
+        runs-on: ubuntu-latest
+        env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            PR_URL: ${{ github.event.pull_request.html_url }}
+        steps:
+            - name: Approve
+              run: |
+                  approved=$(gh pr view "$PR_URL" --json reviews \
+                    --jq '[.reviews[] | select(.author.login == "github-actions" and .state == "APPROVED")] | length')
+                  if [ "$approved" = "0" ]; then
+                    gh pr review "$PR_URL" --approve --body "Dependency update: auto-approved, merges once all checks pass."
+                  fi
+            - name: Enable auto-merge
+              run: gh pr merge "$PR_URL" --auto --squash
+
+    # Branch protection requires PRs to be up to date with master. Renovate
+    # rebases its own PRs; Dependabot needs to be asked.
+    rebase-dependabot:
+        if: github.event_name == 'push'
+        runs-on: ubuntu-latest
+        env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        steps:
+            - name: Ask Dependabot to rebase PRs that fell behind
+              run: |
+                  gh pr list --repo "$GITHUB_REPOSITORY" --author "app/dependabot" --state open \
+                    --json number,mergeStateStatus \
+                    --jq '.[] | select(.mergeStateStatus == "BEHIND") | .number' |
+                  while read -r number; do
+                    gh pr comment "$number" --repo "$GITHUB_REPOSITORY" --body "@dependabot rebase"
+                  done

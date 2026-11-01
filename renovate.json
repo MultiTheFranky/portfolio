@@ -1,9 +1,21 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": ["config:recommended"],
+    "automerge": true,
+    "automergeType": "pr",
+    "platformAutomerge": true,
+    "rebaseWhen": "behind-base-branch",
     "packageRules": [
         {
-            "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+            "description": "Auto-merge every update, including majors; CI gates the merge",
+            "matchUpdateTypes": [
+                "major",
+                "minor",
+                "patch",
+                "pin",
+                "digest",
+                "lockFileMaintenance"
+            ],
             "automerge": true
         }
     ]
