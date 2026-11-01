@@ -583,6 +583,13 @@ const heroSocials = socials.filter((social) =>
         color: var(--fg-muted);
     }
 
+    /* Fixed box so tall logos (e.g. MongoDB) don't scale up via height: auto */
+    .marquee-item img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .marquee-track {
             flex-wrap: wrap;
