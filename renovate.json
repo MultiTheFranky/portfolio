@@ -22,6 +22,12 @@
             "description": "TypeScript 7 (native compiler) has no JS API yet; typescript-eslint and @astrojs/check only support TS <=6. Lift once they support TS 7.",
             "matchPackageNames": ["typescript"],
             "allowedVersions": "<7"
+        },
+        {
+            "description": "The WebKit Playwright tests hang on Ubuntu 26.04 runners (#569). Lift once they pass there.",
+            "matchDatasources": ["github-runners"],
+            "matchPackageNames": ["ubuntu"],
+            "allowedVersions": "<26"
         }
     ]
 }
