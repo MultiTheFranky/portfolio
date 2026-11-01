@@ -17,6 +17,11 @@
                 "lockFileMaintenance"
             ],
             "automerge": true
+        },
+        {
+            "description": "TypeScript 7 (native compiler) has no JS API yet; typescript-eslint and @astrojs/check only support TS <=6. Lift once they support TS 7.",
+            "matchPackageNames": ["typescript"],
+            "allowedVersions": "<7"
         }
     ]
 }
