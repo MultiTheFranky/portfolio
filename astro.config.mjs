@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
 import cloudflare from "@astrojs/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -11,7 +10,12 @@ const isCI = !!process.env.CI || !!process.env.GITHUB_ACTIONS;
 const config = {
     site: "https://multithefranky.com",
     trailingSlash: "ignore",
-    integrations: [react()],
+    build: {
+        // Inline the stylesheets so they don't block the first render with
+        // extra requests; the pages are small and few, so caching them
+        // separately buys little.
+        inlineStylesheets: "always"
+    },
     vite: {
         plugins: [tailwindcss()]
     },
