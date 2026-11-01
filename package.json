@@ -19,7 +19,7 @@
     },
     "engines": {
         "npm": "please-use-pnpm",
-        "node": ">=22",
+        "node": ">=22.23.4",
         "pnpm": ">=8",
         "yarn": "please-use-pnpm"
     },
@@ -36,12 +36,12 @@
         ]
     },
     "dependencies": {
-        "@astrojs/cloudflare": "^13.5.0",
-        "@astrojs/react": "^5.0.4",
+        "@astrojs/cloudflare": "^14.0.0",
+        "@astrojs/react": "^7.0.0",
         "@types/react": "^19.0.0",
         "@types/react-dom": "^19.0.0",
         "@types/react-vertical-timeline-component": "^3.3.6",
-        "astro": "^6.3.1",
+        "astro": "^7.4.4",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-vertical-timeline-component": "^4.0.0",
@@ -63,7 +63,7 @@
         "eslint-plugin-astro": "^3.0.0",
         "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-jsx-a11y": "^6.10.2",
-        "eslint-plugin-prettier": "5.5.6",
+        "eslint-plugin-prettier": "5.5.7",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^7.0.0",
         "eslint-plugin-unicorn": "^64.0.0",
@@ -71,6 +71,6 @@
         "prettier-plugin-astro": "^0.14.1",
         "sharp": "^0.35.5",
         "typescript": "6.0.3",
-        "wrangler": "~4.90.1"
+        "wrangler": "~4.156.0"
     }
 }
