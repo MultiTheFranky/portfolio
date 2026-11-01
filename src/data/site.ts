@@ -67,49 +67,49 @@ export const knowledgeGroups: MainKnowledge[] = [
         knowledge: [
             {
                 name: "React",
-                icon: "https://cdn.svgporn.com/logos/react.svg",
+                icon: "/logos/react.svg",
                 link: "https://reactjs.org/"
             },
             {
                 name: "Astro",
-                icon: "https://cdn.svgporn.com/logos/astro-icon.svg",
+                icon: "/logos/astro.svg",
                 link: "https://astro.build/",
                 inverted: true
             },
             {
                 name: "NextJS",
-                icon: "https://cdn.svgporn.com/logos/nextjs-icon.svg",
+                icon: "/logos/nextjs.svg",
                 link: "https://nextjs.org/",
                 inverted: true
             },
             {
                 name: "TailwindCSS",
-                icon: "https://cdn.svgporn.com/logos/tailwindcss-icon.svg",
+                icon: "/logos/tailwindcss.svg",
                 link: "https://tailwindcss.com/"
             },
             {
                 name: "Sass",
-                icon: "https://cdn.svgporn.com/logos/sass.svg",
+                icon: "/logos/sass.svg",
                 link: "https://sass-lang.com/"
             },
             {
                 name: "TypeScript",
-                icon: "https://cdn.svgporn.com/logos/typescript-icon.svg",
+                icon: "/logos/typescript.svg",
                 link: "https://www.typescriptlang.org/"
             },
             {
                 name: "JavaScript",
-                icon: "https://cdn.svgporn.com/logos/javascript.svg",
+                icon: "/logos/javascript.svg",
                 link: "https://www.javascript.com/"
             },
             {
                 name: "HTML",
-                icon: "https://cdn.svgporn.com/logos/html-5.svg",
+                icon: "/logos/html.svg",
                 link: "https://developer.mozilla.org/en-US/docs/Web/HTML"
             },
             {
                 name: "CSS",
-                icon: "https://cdn.svgporn.com/logos/css-3.svg",
+                icon: "/logos/css.svg",
                 link: "https://developer.mozilla.org/en-US/docs/Web/CSS"
             }
         ]
@@ -119,38 +119,38 @@ export const knowledgeGroups: MainKnowledge[] = [
         knowledge: [
             {
                 name: "NodeJS",
-                icon: "https://cdn.svgporn.com/logos/nodejs-icon.svg",
+                icon: "/logos/nodejs.svg",
                 link: "https://nodejs.org/en/"
             },
             {
                 name: "Express",
-                icon: "https://cdn.worldvectorlogo.com/logos/expressjs.svg",
+                icon: "/logos/express.svg",
                 link: "https://expressjs.com/",
                 inverted: true
             },
             {
                 name: "MongoDB",
-                icon: "https://cdn.svgporn.com/logos/mongodb-icon.svg",
+                icon: "/logos/mongodb.svg",
                 link: "https://www.mongodb.com/"
             },
             {
                 name: "MySQL",
-                icon: "https://cdn.svgporn.com/logos/mysql.svg",
+                icon: "/logos/mysql.svg",
                 link: "https://www.mysql.com/"
             },
             {
                 name: "PostgreSQL",
-                icon: "https://cdn.svgporn.com/logos/postgresql.svg",
+                icon: "/logos/postgresql.svg",
                 link: "https://www.postgresql.org/"
             },
             {
                 name: "Redis",
-                icon: "https://cdn.svgporn.com/logos/redis.svg",
+                icon: "/logos/redis.svg",
                 link: "https://redis.io/"
             },
             {
                 name: "GraphQL",
-                icon: "https://cdn.svgporn.com/logos/graphql.svg",
+                icon: "/logos/graphql.svg",
                 link: "https://graphql.org/"
             }
         ]
@@ -160,58 +160,58 @@ export const knowledgeGroups: MainKnowledge[] = [
         knowledge: [
             {
                 name: "Docker",
-                icon: "https://cdn.svgporn.com/logos/docker-icon.svg",
+                icon: "/logos/docker.svg",
                 link: "https://www.docker.com/"
             },
             {
                 name: "Kubernetes",
-                icon: "https://cdn.svgporn.com/logos/kubernetes.svg",
+                icon: "/logos/kubernetes.svg",
                 link: "https://kubernetes.io/"
             },
             {
                 name: "Nginx",
-                icon: "https://cdn.svgporn.com/logos/nginx.svg",
+                icon: "/logos/nginx.svg",
                 link: "https://www.nginx.com/"
             },
             {
                 name: "Cloudflare",
-                icon: "https://cdn.svgporn.com/logos/cloudflare.svg",
+                icon: "/logos/cloudflare.svg",
                 link: "https://www.cloudflare.com/"
             },
             {
                 name: "Azure",
-                icon: "https://cdn.svgporn.com/logos/microsoft-azure.svg",
+                icon: "/logos/azure.svg",
                 link: "https://azure.microsoft.com/"
             },
             {
                 name: "Google Cloud",
-                icon: "https://cdn.svgporn.com/logos/google-cloud.svg",
+                icon: "/logos/google-cloud.svg",
                 link: "https://cloud.google.com/"
             },
             {
                 name: "CommerceTools",
-                icon: "https://images.ctfassets.net/8q83c033chii/5Gjg45bFu7RmGWLq0wCOll/06e81074e4a44eb6116e0b09cf697834/Partner_Commercetools.svg",
+                icon: "/logos/commercetools.svg",
                 link: "https://commercetools.com/"
             },
             {
                 name: "Twilio",
-                icon: "https://cdn.svgporn.com/logos/twilio-icon.svg",
+                icon: "/logos/twilio.svg",
                 link: "https://www.twilio.com/"
             },
             {
                 name: "SendGrid",
-                icon: "https://cdn.svgporn.com/logos/sendgrid-icon.svg",
+                icon: "/logos/sendgrid.svg",
                 link: "https://sendgrid.com/"
             },
             {
                 name: "GitHub",
-                icon: "https://cdn.svgporn.com/logos/github-octocat.svg",
+                icon: "/logos/github.svg",
                 link: "https://github.com",
                 inverted: true
             },
             {
                 name: "Grafana",
-                icon: "https://cdn.svgporn.com/logos/grafana.svg",
+                icon: "/logos/grafana.svg",
                 link: "https://grafana.com/"
             }
         ]
