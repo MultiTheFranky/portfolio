@@ -63,6 +63,16 @@ test.describe("Navigation and UX", () => {
         ).toBeInViewport();
     });
 
+    test("keeps spaces between inline elements", async ({ page }) => {
+        await page.goto("/about");
+        await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+            /Francisco\sFranky.*\sÁlamo García/
+        );
+        await expect(page.locator("footer")).toContainText(
+            `© ${new Date().getFullYear()} Francisco Álamo García.`
+        );
+    });
+
     test("contact links use the site email", async ({ page }) => {
         await page.goto("/");
         const contactLinks = page.locator('a[href^="mailto:"]');
