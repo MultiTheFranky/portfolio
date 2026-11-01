@@ -28,6 +28,32 @@ const ogImageWidth = String(ogImage.attributes.width ?? 630);
 const ogImageHeight = String(ogImage.attributes.height ?? 832);
 const ogImageUrl = new URL(ogImage.src, siteUrl).href;
 
+// Applies the theme before first paint to avoid a light/dark flash. It has to
+// stay inline, so its hash is added to the CSP by hand.
+const themeScript = `(() => {
+    const root = document.documentElement;
+    root.classList.add("js");
+    let theme = null;
+    try {
+        theme = localStorage.getItem("theme");
+    } catch {
+        theme = null;
+    }
+    if (!theme) {
+        theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+    }
+    root.classList.toggle("dark", theme === "dark");
+})();`;
+const themeScriptDigest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(themeScript)
+);
+Astro.csp?.insertScriptHash(
+    `sha256-${btoa(String.fromCharCode(...new Uint8Array(themeScriptDigest)))}`
+);
+
 const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -53,6 +79,9 @@ const personSchema = {
 
 <!doctype html>
 <html lang="en" class="noise-overlay">
+    {/* The email is meant to be public; skipping Cloudflare's obfuscation
+           avoids its render-blocking email-decode script */}
+    <Fragment set:html="<!--email_off-->" />
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -95,27 +124,7 @@ const personSchema = {
             media="(prefers-color-scheme: dark)"
         />
 
-        <!-- Apply the theme before first paint to avoid a light/dark flash -->
-        <script is:inline>
-            (() => {
-                const root = document.documentElement;
-                root.classList.add("js");
-                let theme = null;
-                try {
-                    theme = localStorage.getItem("theme");
-                } catch {
-                    theme = null;
-                }
-                if (!theme) {
-                    theme = window.matchMedia("(prefers-color-scheme: dark)")
-                        .matches
-                        ? "dark"
-                        : "light";
-                }
-                root.classList.toggle("dark", theme === "dark");
-            })();
-        </script>
-
+        <script is:inline set:html={themeScript} />
         <script
             is:inline
             type="application/ld+json"
@@ -450,4 +459,5 @@ const personSchema = {
             });
         </script>
     </body>
+    <Fragment set:html="<!--/email_off-->" />
 </html>

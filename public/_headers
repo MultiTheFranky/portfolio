@@ -1,3 +1,14 @@
+# Security headers for every page. The script and style policy lives in a
+# <meta> tag Astro generates with the inline-code hashes; frame-ancestors only
+# works as a header, so it is set here.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: frame-ancestors 'none'
+  X-Frame-Options: DENY
+  Cross-Origin-Opener-Policy: same-origin
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
 # Build output in /_astro/ is content-hashed, so it can be cached forever
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable

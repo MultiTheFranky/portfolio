@@ -55,7 +55,11 @@ const heroSocials = socials.filter((social) =>
             >
                 <span class="sr-only">{SITE.jobTitle}</span>
                 <span aria-hidden="true">
-                    <span id="typed-role" class="typed-role">
+                    <span
+                        id="typed-role"
+                        class="typed-role"
+                        data-roles={JSON.stringify(roles)}
+                    >
                         {roles[0]}
                     </span>
                     <span class="caret">|</span>
@@ -102,7 +106,7 @@ const heroSocials = socials.filter((social) =>
                             target="_blank"
                             rel="noopener noreferrer"
                             class="social-chip"
-                            aria-label={`${social.name} (opens in a new tab)`}
+                            aria-label={`${social.name} profile (opens in a new tab)`}
                         >
                             <img
                                 src={social.icon}
@@ -385,27 +389,24 @@ const heroSocials = socials.filter((social) =>
         aspect-ratio: 1;
         padding: 6px;
         border-radius: 9999px;
-        background: conic-gradient(
-            from var(--angle, 0deg),
-            #00b1bb,
-            #38bdf8,
-            #6366f1,
-            #0d0950,
-            #00b1bb
-        );
-        animation: spin-ring 6s linear infinite;
         box-shadow: 0 30px 80px rgba(0, 177, 187, 0.3);
+        isolation: isolate;
     }
 
-    @property --angle {
-        syntax: "<angle>";
-        initial-value: 0deg;
-        inherits: false;
+    /* Spin the gradient with a transform so the compositor can animate it */
+    .avatar-ring::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: inherit;
+        background: conic-gradient(#00b1bb, #38bdf8, #6366f1, #0d0950, #00b1bb);
+        animation: spin-ring 6s linear infinite;
     }
 
     @keyframes spin-ring {
         to {
-            --angle: 360deg;
+            transform: rotate(360deg);
         }
     }
 
@@ -599,7 +600,7 @@ const heroSocials = socials.filter((social) =>
     }
 </style>
 
-<script define:vars={{ roles }}>
+<script>
     (() => {
         const target = document.getElementById("typed-role");
         if (
@@ -608,6 +609,9 @@ const heroSocials = socials.filter((social) =>
         ) {
             return;
         }
+
+        const roles: string[] = JSON.parse(target.dataset.roles ?? "[]");
+        if (!roles.length) return;
 
         let roleIndex = 0;
         let charIndex = roles[0].length;

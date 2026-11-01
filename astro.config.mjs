@@ -10,6 +10,23 @@ const isCI = !!process.env.CI || !!process.env.GITHUB_ACTIONS;
 const config = {
     site: "https://multithefranky.com",
     trailingSlash: "ignore",
+    security: {
+        // Hash every inline script and style so only our own code can run.
+        csp: {
+            directives: ["object-src 'none'", "base-uri 'self'"],
+            scriptDirective: {
+                // Cloudflare Web Analytics injects its beacon at the edge
+                resources: ["'self'", "https://static.cloudflareinsights.com"]
+            },
+            styleDirective: {
+                // Components set animation delays with inline style attributes
+                resources: [
+                    "'self'",
+                    { resource: "'unsafe-inline'", kind: "attribute" }
+                ]
+            }
+        }
+    },
     build: {
         // Inline the stylesheets so they don't block the first render with
         // extra requests; the pages are small and few, so caching them
