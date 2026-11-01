@@ -3,25 +3,28 @@ import { SITE } from "../data/site";
 ---
 
 <footer class="m-4 footer-container">
-    <div
-        class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between footer-content"
-    >
-        <span
-            class="text-sm text-gray-500 sm:text-center dark:text-gray-400 footer-item"
-            >© {new Date().getFullYear()}{" "}
-            <a href="/" class="footer-link hover:underline">{SITE.author}</a>.
-            All Rights Reserved.
+    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between footer-content">
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400 footer-item">
+            © {new Date().getFullYear()}{" "}
+            <a href="/" class="footer-link hover:underline">
+                {SITE.author}
+            </a>
+            . All Rights Reserved.
         </span>
-        <span
-            class="text-sm text-gray-500 sm:text-center dark:text-gray-400 footer-item footer-heart"
-            >Made with <span class="heart-icon" role="img" aria-label="love"
-                >❤️</span
-            > using Astro · <a
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400 footer-item footer-heart">
+            Made with{" "}
+            <span class="heart-icon" role="img" aria-label="love">
+                ❤️
+            </span>{" "}
+            using Astro ·{" "}
+            <a
                 href="https://github.com/MultiTheFranky/portfolio"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="footer-link hover:underline">View source on GitHub</a
+                class="footer-link hover:underline"
             >
+                View source on GitHub
+            </a>
         </span>
         <ul
             aria-label="Footer"
@@ -30,14 +33,18 @@ import { SITE } from "../data/site";
             <li class="footer-item">
                 <a
                     href="/about"
-                    class="footer-link mr-4 hover:underline md:mr-6">About</a
+                    class="footer-link mr-4 hover:underline md:mr-6"
                 >
+                    About
+                </a>
             </li>
             <li class="footer-item">
                 <a
                     href={`mailto:${SITE.email}`}
-                    class="footer-link hover:underline">Contact</a
+                    class="footer-link hover:underline"
                 >
+                    Contact
+                </a>
             </li>
         </ul>
     </div>
