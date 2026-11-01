@@ -40,6 +40,7 @@ const isCurrent = (href: string) => href === currentPath;
         -webkit-animation: Title 30s ease infinite;
         -moz-animation: Title 30s ease infinite;
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: Title 30s ease infinite;
         background-size: 400%;
@@ -232,7 +233,7 @@ const isCurrent = (href: string) => href === currentPath;
             class="flex items-center logo-container"
             aria-label={`${SITE.name} — home`}
         >
-            <span class="sm:mx-4 text-3xl sm:text-5xl lg:text-6xl text-gray-500 dark:text-gray-300 font-semibold tracking-tight">
+            <span class="sm:mx-4 text-2xl sm:text-3xl leading-normal text-gray-500 dark:text-gray-300 font-extrabold tracking-tight">
                 MultiThe<span class="text-gradient">Franky</span>
             </span>
         </a>
