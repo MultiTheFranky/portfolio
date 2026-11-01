@@ -34,8 +34,8 @@ jobs:
 
     # Branch protection requires PRs to be up to date with master. Renovate
     # rebases its own PRs; Dependabot only rebases on conflicts, so update its
-    # branches here. Pushes made with GITHUB_TOKEN don't trigger workflows, so
-    # start the PR checks explicitly afterwards.
+    # branches here. GitHub holds the PR checks for pushes made with
+    # GITHUB_TOKEN as "action required", so approve that run afterwards.
     update-dependabot:
         if: github.event_name == 'push'
         runs-on: ubuntu-latest
@@ -65,5 +65,19 @@ jobs:
                       [ "$new_head" != "$head" ] && break
                       sleep 2
                     done
-                    gh workflow run pull-request.yml --repo "$GITHUB_REPOSITORY" --ref "$branch"
+                    # then for its PR checks run, which waits for approval
+                    run=""
+                    for _ in $(seq 1 30); do
+                      run=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow pull-request.yml \
+                        --commit "$new_head" --event pull_request --status action_required \
+                        --json databaseId --jq '.[0].databaseId // empty')
+                      [ -n "$run" ] && break
+                      sleep 2
+                    done
+                    if [ -n "$run" ]; then
+                      gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$run/approve"
+                    else
+                      echo "::warning::#$number has no PR checks run to approve; starting one"
+                      gh workflow run pull-request.yml --repo "$GITHUB_REPOSITORY" --ref "$branch"
+                    fi
                   done
