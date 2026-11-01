@@ -73,9 +73,7 @@ export const prerender = true;
                 class="bg-transparent rounded-lg overflow-hidden flex flex-col sm:flex-row items-stretch gap-4 reveal profile-card"
                 style="--delay:0ms"
             >
-                <div
-                    class="profile-image h-72 sm:h-auto sm:w-56 flex-none rounded-t sm:rounded-t-none sm:rounded-l overflow-hidden"
-                >
+                <div class="profile-image h-72 sm:h-auto sm:w-56 flex-none rounded-t sm:rounded-t-none sm:rounded-l overflow-hidden">
                     <Image
                         src={aboutImage}
                         alt={`Portrait of ${SITE.author}`}
@@ -92,20 +90,23 @@ export const prerender = true;
                             <span
                                 class="inline name-reveal"
                                 style="animation-delay: 0.2s"
-                                >Francisco&nbsp;</span
                             >
+                                Francisco&nbsp;
+                            </span>
                             <span
                                 class="inline text-gradient name-reveal"
                                 style="animation-delay: 0.4s"
-                                aria-hidden="true">Franky</span
+                                aria-hidden="true"
                             >
+                                Franky
+                            </span>
                             <span class="sr-only">“Franky”</span>{" "}
                             <span
                                 class="inline name-reveal"
                                 style="animation-delay: 0.6s"
                             >
-                                Álamo García</span
-                            >
+                                Álamo García
+                            </span>
                         </h1>
                         <p class="text-base bio-text">
                             Born in Santander, Spain, in 1997, I studied
@@ -130,45 +131,39 @@ export const prerender = true;
             </section>
 
             <section class="mt-8 reveal" style="--delay:180ms">
-                <h2
-                    class="text-center text-3xl sm:text-4xl font-semibold leading-8 section-title"
-                >
+                <h2 class="text-center text-3xl sm:text-4xl font-semibold leading-8 section-title">
                     Find me online
                 </h2>
-                <div
-                    class="mx-auto mt-6 grid max-w-lg grid-cols-3 sm:grid-cols-6 gap-6 items-center justify-items-center"
-                >
-                    {
-                        socials.map((item, i) => (
-                            <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="social-card flex flex-col items-center transform transition-transform duration-200"
-                                style={`--delay:${220 + i * 40}ms; --index: ${i}`}
-                                aria-label={`${item.name} (opens in a new tab)`}
-                            >
-                                <div class="social-icon-wrapper">
-                                    <img
-                                        src={item.icon}
-                                        alt=""
-                                        aria-hidden="true"
-                                        class="social-icon h-12 w-12 rounded-md object-contain shadow-sm dark:invert"
-                                        loading="lazy"
-                                        decoding="async"
-                                        width="48"
-                                        height="48"
-                                    />
-                                </div>
-                                <span class="mt-2 text-sm font-medium social-name">
-                                    {item.name}
-                                </span>
-                                <span class="sr-only">
-                                    Open {item.name} in a new tab
-                                </span>
-                            </a>
-                        ))
-                    }
+                <div class="mx-auto mt-6 grid max-w-lg grid-cols-3 sm:grid-cols-6 gap-6 items-center justify-items-center">
+                    {socials.map((item, i) => (
+                        <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social-card flex flex-col items-center transform transition-transform duration-200"
+                            style={`--delay:${220 + i * 40}ms; --index: ${i}`}
+                            aria-label={`${item.name} (opens in a new tab)`}
+                        >
+                            <div class="social-icon-wrapper">
+                                <img
+                                    src={item.icon}
+                                    alt=""
+                                    aria-hidden="true"
+                                    class="social-icon h-12 w-12 rounded-md object-contain shadow-sm dark:invert"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="48"
+                                    height="48"
+                                />
+                            </div>
+                            <span class="mt-2 text-sm font-medium social-name">
+                                {item.name}
+                            </span>
+                            <span class="sr-only">
+                                Open {item.name} in a new tab
+                            </span>
+                        </a>
+                    ))}
                 </div>
             </section>
         </div>
