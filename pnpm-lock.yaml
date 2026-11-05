@@ -13,10 +13,10 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: ^14.0.0
-        version: 14.4.3(@types/node@25.0.2)(astro@7.4.4(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(workerd@1.20261023.1)(wrangler@4.156.0(@types/node@25.0.2))(yaml@2.9.1)
+        version: 14.4.4(@types/node@25.0.2)(astro@7.4.5(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(workerd@1.20261023.1)(wrangler@4.156.0(@types/node@25.0.2))(yaml@2.9.1)
       astro:
         specifier: ^7.4.4
-        version: 7.4.4(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
+        version: 7.4.5(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
       tailwindcss:
         specifier: ^4.1.13
         version: 4.3.3
@@ -96,8 +96,8 @@ importers:
 
 packages:
 
-  '@astrojs/cloudflare@14.4.3':
-    resolution: {integrity: sha512-Ki3WMvkuKu6pgRucw8bAQR5nZMu85monmwaCJ5J2jDN1vEmdZi6ClXm1dC41KvxH2KBLzJf4GcLsC7fif0r+ZQ==}
+  '@astrojs/cloudflare@14.4.4':
+    resolution: {integrity: sha512-VC7BVACFSNNKevbuDftzmhwW+9yYy5cqplrBwPBeGa9Nojj6pXyIxMGIyIwhAyZWuRchqwCh7KDhb015oXaoKg==}
     peerDependencies:
       astro: ^7.4.0
       wrangler: ^4.125.0
@@ -125,24 +125,28 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@astrojs/compiler-binding-linux-arm64-musl@0.5.2':
     resolution: {integrity: sha512-GRGyby3AZWw5d6JQzidyxPyvGgHWsSusrpgKyFVpDTKctABF7L3Pd5V1cRJbV36/rcu+Eh292/wL7pF7MkmGkQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@astrojs/compiler-binding-linux-x64-gnu@0.5.2':
     resolution: {integrity: sha512-9XAqGTMQAtIslMsjK3xdyY6OI9d59OZqcLBB6pvD/DcoR0daYswfrKx2azdDERDY4AqAnWPC7odVM1BmxYv3Vw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@astrojs/compiler-binding-linux-x64-musl@0.5.2':
     resolution: {integrity: sha512-jOViewGeTh9bSfS8vK72ECxoy2yvmA+Pd/ZcEvBI5c7+7IcfHwZ5qA4L9fRYuOhSrAifvQ2dV4vm1XAtloaWBw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@astrojs/compiler-binding-wasm32-wasi@0.5.2':
     resolution: {integrity: sha512-Z7p64doar1uvR5C9Xs6j1CV9lGlPVQX7OQ2aAtZ/xKC5aGS6GB13nyc2UfQXTQLvZrvVwsyaflTQy6ziY5Bekw==}
@@ -307,21 +311,25 @@ packages:
     resolution: {integrity: sha512-glkYXZCJywjP13v67eAyAMSJdF+ncvEbYvgi/wOtffL9tQ27lr/zsyzUfgs+ovjJ9d8JNQKiXeiArJcX8PJL9w==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@bruits/satteri-linux-arm64-musl@0.10.5':
     resolution: {integrity: sha512-yWdgG1g17Nh2QyGVlFUxGRa3FEFwiMcpZEyMNWkbM3deC94cmVc+/i9OuyFpdKuWo3GkgoCtYVOoxk1uCnCZIA==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@bruits/satteri-linux-x64-gnu@0.10.5':
     resolution: {integrity: sha512-FVaLoPT1fBgGl0J+AYebyyXJYBachGl8Oyyrf1lye4RTqCB4S0Gwkj1uM9RJyThUOvx5VUmAT1CnNh1SFHA+kw==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@bruits/satteri-linux-x64-musl@0.10.5':
     resolution: {integrity: sha512-EHpVAx2bqW3GINHTKkljtxVfQmVDGWIuwOYOP5YghTj+0PkBa2o8oKPRtQ9Kbsr1Fye8jtUcDjhwj2jMNugZKg==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@bruits/satteri-wasm32-wasi@0.10.5':
     resolution: {integrity: sha512-ypz8c/Zmipxp4IoeDa228Gstv6TLzVmNs3yC6wKCoNSOjx1iwpgzu87Y3hTkXFdwChVGU85qeUDuOIarGUZQLw==}
@@ -983,36 +991,42 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-arm64-musl@1.2.16':
     resolution: {integrity: sha512-hrJpblMsrQ58U9veWpbXzkhV5zStunds6HWLprqq1qauvgBr1E6P+24kLj6lSLI9vjRn/RYpjprhkHQPKGWpNg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rolldown/binding-linux-ppc64-gnu@1.2.16':
     resolution: {integrity: sha512-qJd/dC6j6CwLG9/s/RP2nb1RZ0GIgj7Ioj7x/SYa3RzjVrlzrmH0fhIOpfvqQDeIsdP0loi+kHaMhJzY1PBIaA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-s390x-gnu@1.2.16':
     resolution: {integrity: sha512-Vx7Xg5uUJuNcujJjI70OICaH0EYj80BtOLZTSN7uOYg8QOLlyKnaG0IW7Fn/J0IpJsaKzmDKMhOQv1JBM9m9vg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-x64-gnu@1.2.16':
     resolution: {integrity: sha512-TNKhgE3uJTsTzatUSSYt0Kgo+Oa2uSlSjz4r1aEIea7HX6ULBym4fAlYUhG1i6pjNf2njfCUAfKwr6C3E9Xg1w==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-x64-musl@1.2.16':
     resolution: {integrity: sha512-7chXdpjXZ8qG0+mIxECN3cT9kvhZ3/oZhMX6Pp876P7CDrIy8nJswva6Mq357JR7eYXfuskwZxMeV1SzoZdHrA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rolldown/binding-openharmony-arm64@1.2.16':
     resolution: {integrity: sha512-Kwjt+7uNTJK5/MDkGWGVO2KQPnj8yAV75dMpfwyHZrJSXWHrniOB0aUEWlVYf3H1hOqFLIStLdM5QXq6bnKmOQ==}
@@ -1357,8 +1371,8 @@ packages:
     resolution: {integrity: sha512-WavQUarfgwSbpCq4xsdcIBdX5KArfI2d6DD8EIloJIMthnB1508iNpx4C77EhUyMd03LpEt8HAPzwF/cG0V39g==}
     engines: {node: ^22.22.3 || ^24.16.0 || >=26.3.0}
 
-  astro@7.4.4:
-    resolution: {integrity: sha512-e+BzhGCaIY/H1tV/BQPTbOPZVZ8wuu6+bbpc+3oSMH2UgoB1l9peSGASk6nswtYra9PO9OoMREhldKtQkZ5TVw==}
+  astro@7.4.5:
+    resolution: {integrity: sha512-n5lET11/qnrOWn4wNpXxD9g2VKkTIa162hHgrkMPChMQC5q/xh2lY2OerK5mpsEAFCNmXsYA7NISE+9Uo7Cxxg==}
     engines: {node: '>=22.23.4', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
     peerDependencies:
@@ -2408,6 +2422,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   lightningcss-linux-arm64-musl@1.32.0:
     resolution: {integrity: sha512-UpQkoenr4UJEzgVIYpI80lDFvRmPVg6oqboNHfoH4CQIfNA+HOrZ7Mo7KZP02dC6LjghPQJeBsvXhJod/wnIBg==}
@@ -2421,6 +2436,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   lightningcss-linux-x64-gnu@1.32.0:
     resolution: {integrity: sha512-V7Qr52IhZmdKPVr+Vtw8o+WLsQJYCTd8loIfpDaMRWGUZfBOYEJeyJIkqGIDMZPwPx24pUMfwSxxI8phr/MbOA==}
@@ -2434,6 +2450,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   lightningcss-linux-x64-musl@1.32.0:
     resolution: {integrity: sha512-bYcLp+Vb0awsiXg/80uCRezCYHNg1/l3mt0gzHnWV9XP1W5sKa5/TCdGWaR/zBM2PeF/HbsQv/j2URNOiVuxWg==}
@@ -2447,6 +2464,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   lightningcss-win32-arm64-msvc@1.32.0:
     resolution: {integrity: sha512-8SbC8BR40pS6baCM8sbtYDSwEVQd4JlFTOlaD3gWGHfThTcABnNDBda6eTZeqbofalIJhFx0qKzgHJmcPTnGdw==}
@@ -3465,12 +3483,12 @@ packages:
 
 snapshots:
 
-  '@astrojs/cloudflare@14.4.3(@types/node@25.0.2)(astro@7.4.4(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(workerd@1.20261023.1)(wrangler@4.156.0(@types/node@25.0.2))(yaml@2.9.1)':
+  '@astrojs/cloudflare@14.4.4(@types/node@25.0.2)(astro@7.4.5(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(workerd@1.20261023.1)(wrangler@4.156.0(@types/node@25.0.2))(yaml@2.9.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.13.0
       '@astrojs/underscore-redirects': 1.0.4
       '@cloudflare/vite-plugin': 1.66.0(@types/node@25.0.2)(vite@8.3.5(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))(workerd@1.20261023.1)(wrangler@4.156.0(@types/node@25.0.2))
-      astro: 7.4.4(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
+      astro: 7.4.5(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
       piccolore: 0.1.3
       prismjs: 1.30.0
       vite: 8.3.5(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
@@ -4692,7 +4710,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@7.4.4(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1):
+  astro@7.4.5(@types/node@25.0.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1):
     dependencies:
       '@astrojs/compiler-rs': 0.5.2
       '@astrojs/internal-helpers': 0.13.0
@@ -6006,8 +6024,8 @@ snapshots:
 
   magicast@0.5.5:
     dependencies:
-      '@babel/parser': 7.29.7
-      '@babel/types': 7.29.7
+      '@babel/parser': 7.29.12
+      '@babel/types': 7.29.11
       source-map-js: 1.2.2
 
   math-intrinsics@1.1.0: {}
