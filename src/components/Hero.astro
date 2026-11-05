@@ -369,13 +369,13 @@ const heroSocials = socials.filter((social) =>
         border-radius: 1rem;
         text-align: center;
         border: 1px solid rgba(148, 163, 184, 0.3);
-        background: rgba(255, 255, 255, 0.55);
-        backdrop-filter: blur(10px);
+        /* Solid tint instead of backdrop-filter, which is costly to repaint */
+        background: rgba(255, 255, 255, 0.7);
         transition: transform 0.3s ease;
     }
 
     :global(.dark) .stat-card {
-        background: rgba(15, 23, 42, 0.45);
+        background: rgba(15, 23, 42, 0.6);
     }
 
     .stat-card:hover {
