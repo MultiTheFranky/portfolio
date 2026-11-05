@@ -38,7 +38,8 @@ for (const { path, name } of PAGES) {
         });
 
         test("images have alt text", async ({ page }) => {
-            await page.goto(path);
+            // Only the markup is inspected, so don't wait for every resource
+            await page.goto(path, { waitUntil: "domcontentloaded" });
             const missingAlt = await page
                 .locator("img:not([alt])")
                 .evaluateAll((images) =>
@@ -48,7 +49,7 @@ for (const { path, name } of PAGES) {
         });
 
         test("internal links resolve", async ({ page, request }) => {
-            await page.goto(path);
+            await page.goto(path, { waitUntil: "domcontentloaded" });
             const hrefs = await page
                 .locator("a[href]")
                 .evaluateAll((links) =>

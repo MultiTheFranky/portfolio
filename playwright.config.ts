@@ -12,7 +12,9 @@ export default defineConfig({
         baseURL: "http://127.0.0.1:4321",
         trace: "on-first-retry",
         screenshot: "only-on-failure",
-        video: "retain-on-failure"
+        // Recording every attempt slows WebKit's context teardown enough to
+        // time out tests on CI; a retry still captures the failure
+        video: "on-first-retry"
     },
     webServer: {
         // CI tests the production build so build-only regressions are caught

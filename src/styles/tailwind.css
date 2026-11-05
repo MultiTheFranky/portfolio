@@ -470,6 +470,17 @@ html {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+
+    /* Show reveal content in its final state at once: even a 0.01ms
+       transition leaves it offset until the next frame is painted */
+    .js .scroll-reveal,
+    .js .scroll-reveal-left,
+    .js .scroll-reveal-right,
+    .js .scroll-reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 /* ===== SELECTION STYLING ===== */
