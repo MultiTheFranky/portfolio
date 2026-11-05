@@ -21,9 +21,6 @@ test.describe("Navigation and UX", () => {
     test("header navigation reaches every page and section", async ({
         page
     }) => {
-        // Jump straight to anchors: a smooth scroll can be interrupted by
-        // late layout work and stop short of the target
-        await page.emulateMedia({ reducedMotion: "reduce" });
         await page.setViewportSize({ width: 1280, height: 800 });
         await page.goto("/");
         const nav = page.getByRole("navigation", { name: "Main navigation" });
