@@ -5,6 +5,8 @@
     "automergeType": "pr",
     "platformAutomerge": true,
     "rebaseWhen": "behind-base-branch",
+    "minimumReleaseAge": "2 days",
+    "internalChecksFilter": "strict",
     "packageRules": [
         {
             "description": "Auto-merge every update, including majors; CI gates the merge",
