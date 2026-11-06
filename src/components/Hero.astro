@@ -1,25 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import aboutImage from "../assets/about.png";
-import { SITE, socials, knowledgeGroups } from "../data/site";
-
-const roles = [
-    "Software Engineer",
-    "Full-stack Developer",
-    "Cloud & DevOps tinkerer"
-];
-
-const currentYear = new Date().getFullYear();
-const allSkills = knowledgeGroups.flatMap((group) => group.knowledge);
-const stats = [
-    { value: `${currentYear - 2009}+`, label: "Years coding" },
-    { value: `${currentYear - 2019}+`, label: "Years in industry" },
-    { value: `${allSkills.length}`, label: "Technologies" }
-];
-
-const orbitSkills = ["React", "Astro", "NodeJS", "Docker"]
-    .map((name) => allSkills.find((skill) => skill.name === name))
-    .filter((skill) => skill !== undefined);
+import { SITE, socials } from "../data/site";
 
 const heroSocials = socials.filter((social) =>
     ["Github", "Linkedin"].includes(social.name)
@@ -33,7 +15,6 @@ const heroSocials = socials.filter((social) =>
     <div class="grid items-center gap-14 lg:grid-cols-[1.2fr_1fr]">
         <div class="text-center lg:text-left">
             <p class="hero-badge hero-in" style="--d: 0ms">
-                <span class="pulse-dot" aria-hidden="true"></span>
                 Based in Santander, Spain
             </p>
 
@@ -45,32 +26,22 @@ const heroSocials = socials.filter((social) =>
                 <span class="block text-lg font-semibold tracking-normal text-[var(--fg-muted)] sm:text-xl">
                     Hi, I'm
                 </span>
-                Francisco <span class="hero-gradient">“Franky”</span> Álamo
+                Francisco “Franky” Álamo
             </h1>
 
             <p
                 class="hero-in mt-5 text-xl font-semibold sm:text-2xl"
                 style="--d: 200ms"
             >
-                <span class="sr-only">{SITE.jobTitle}</span>
-                <span aria-hidden="true">
-                    <span
-                        id="typed-role"
-                        class="typed-role"
-                        data-roles={JSON.stringify(roles)}
-                    >
-                        {roles[0]}
-                    </span>
-                    <span class="caret">|</span>
-                </span>
+                <span class="hero-role">{SITE.jobTitle}</span>
             </p>
 
             <p
                 class="hero-in mx-auto mt-6 max-w-xl text-base leading-7 text-[var(--fg-muted)] sm:text-lg lg:mx-0"
                 style="--d: 300ms"
             >
-                I build fast, accessible websites and the cloud plumbing
-                behind them. Currently at{" "}
+                I build fast, accessible websites and the cloud plumbing behind
+                them. Currently at{" "}
                 <strong class="text-[var(--fg)]">Incentro</strong>, shipping
                 e-commerce platforms for brands like GrandVision and Casashops.
             </p>
@@ -118,27 +89,9 @@ const heroSocials = socials.filter((social) =>
                     ))}
                 </div>
             </div>
-
-            <dl
-                class="hero-in mt-12 grid max-w-lg grid-cols-3 gap-4 mx-auto lg:mx-0"
-                style="--d: 500ms"
-            >
-                {stats.map((stat) => (
-                    <div class="stat-card">
-                        <dt class="text-xs font-medium uppercase tracking-wider text-[var(--fg-muted)]">
-                            {stat.label}
-                        </dt>
-                        <dd class="stat-value order-first text-3xl font-extrabold sm:text-4xl">
-                            {stat.value}
-                        </dd>
-                    </div>
-                ))}
-            </dl>
         </div>
 
         <div class="hero-in relative mx-auto" style="--d: 200ms">
-            <div class="blob blob-a" aria-hidden="true"></div>
-            <div class="blob blob-b" aria-hidden="true"></div>
             <div class="avatar-ring">
                 <Image
                     src={aboutImage}
@@ -150,48 +103,8 @@ const heroSocials = socials.filter((social) =>
                     class="avatar"
                 />
             </div>
-            <ul class="orbit" aria-hidden="true">
-                {orbitSkills.map((skill, index) => (
-                    <li class="orbit-item" style={`--i: ${index}`}>
-                        <img
-                            src={skill.icon}
-                            alt=""
-                            width="28"
-                            height="28"
-                            loading="lazy"
-                        />
-                    </li>
-                ))}
-            </ul>
         </div>
     </div>
-
-    <a href="#timeline" class="scroll-cue" aria-label="Scroll to timeline">
-        <span class="mouse" aria-hidden="true">
-            <span class="wheel"></span>
-        </span>
-    </a>
-</section>
-
-<section class="marquee" aria-label="Technologies I work with">
-    <ul class="marquee-track">
-        {[...allSkills, ...allSkills].map((skill, index) => (
-            <li
-                class="marquee-item"
-                aria-hidden={index >= allSkills.length ? "true" : undefined}
-            >
-                <img
-                    src={skill.icon}
-                    alt=""
-                    width="28"
-                    height="28"
-                    loading="lazy"
-                    class={skill.inverted ? "invert-on-dark" : ""}
-                />
-                <span>{skill.name}</span>
-            </li>
-        ))}
-    </ul>
 </section>
 
 <style>
@@ -228,69 +141,12 @@ const heroSocials = socials.filter((social) =>
         color: #5eead4;
     }
 
-    .pulse-dot {
-        position: relative;
-        width: 0.55rem;
-        height: 0.55rem;
-        border-radius: 9999px;
-        background: #10b981;
-    }
-
-    .pulse-dot::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: inherit;
-        animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-
-    @keyframes ping {
-        75%,
-        100% {
-            transform: scale(2.4);
-            opacity: 0;
-        }
-    }
-
-    .hero-gradient,
-    .stat-value {
-        background: linear-gradient(120deg, #00b1bb, #38bdf8, #6366f1, #00b1bb);
-        background-size: 300% auto;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient-pan 8s ease infinite;
-    }
-
-    @keyframes gradient-pan {
-        0%,
-        100% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-    }
-
-    .typed-role {
+    .hero-role {
         color: #00838a;
     }
 
     :global(.dark) .typed-role {
         color: #2dd4bf;
-    }
-
-    .caret {
-        margin-left: 2px;
-        color: #00b1bb;
-        animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-        50% {
-            opacity: 0;
-        }
     }
 
     .btn-primary,
@@ -360,27 +216,6 @@ const heroSocials = socials.filter((social) =>
         border-color: #00b1bb;
     }
 
-    .stat-card {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        padding: 1rem 0.75rem;
-        border-radius: 1rem;
-        text-align: center;
-        border: 1px solid rgba(148, 163, 184, 0.3);
-        /* Solid tint instead of backdrop-filter, which is costly to repaint */
-        background: rgba(255, 255, 255, 0.7);
-        transition: transform 0.3s ease;
-    }
-
-    :global(.dark) .stat-card {
-        background: rgba(15, 23, 42, 0.6);
-    }
-
-    .stat-card:hover {
-        transform: translateY(-4px);
-    }
-
     /* Avatar */
     .avatar-ring {
         position: relative;
@@ -388,25 +223,8 @@ const heroSocials = socials.filter((social) =>
         aspect-ratio: 1;
         padding: 6px;
         border-radius: 9999px;
+        background: #00b1bb;
         box-shadow: 0 30px 80px rgba(0, 177, 187, 0.3);
-        isolation: isolate;
-    }
-
-    /* Spin the gradient with a transform so the compositor can animate it */
-    .avatar-ring::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        border-radius: inherit;
-        background: conic-gradient(#00b1bb, #38bdf8, #6366f1, #0d0950, #00b1bb);
-        animation: spin-ring 6s linear infinite;
-    }
-
-    @keyframes spin-ring {
-        to {
-            transform: rotate(360deg);
-        }
     }
 
     .avatar {
@@ -421,218 +239,4 @@ const heroSocials = socials.filter((social) =>
     :global(.dark) .avatar {
         border-color: #0d0950;
     }
-
-    .blob {
-        position: absolute;
-        z-index: -1;
-        filter: blur(50px);
-        opacity: 0.55;
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        animation: morph 10s ease-in-out infinite;
-    }
-
-    .blob-a {
-        width: 70%;
-        height: 70%;
-        top: -10%;
-        left: -15%;
-        background: #00b1bb;
-    }
-
-    .blob-b {
-        width: 60%;
-        height: 60%;
-        bottom: -10%;
-        right: -15%;
-        background: #6366f1;
-        animation-delay: -5s;
-    }
-
-    .orbit {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-    }
-
-    .orbit-item {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 3.25rem;
-        height: 3.25rem;
-        margin: -1.625rem;
-        border-radius: 9999px;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
-        transform: rotate(calc(var(--i) * 90deg + 45deg))
-            translateX(min(42vw, 12.5rem))
-            rotate(calc(var(--i) * -90deg - 45deg));
-        animation: bob 4s ease-in-out infinite;
-        animation-delay: calc(var(--i) * -1s);
-    }
-
-    :global(.dark) .orbit-item {
-        box-shadow: 0 10px 25px rgba(0, 177, 187, 0.3);
-    }
-
-    @keyframes bob {
-        0%,
-        100% {
-            translate: 0 0;
-        }
-        50% {
-            translate: 0 -10px;
-        }
-    }
-
-    /* Scroll cue */
-    .scroll-cue {
-        display: none;
-        margin: 4rem auto 0;
-        width: fit-content;
-    }
-
-    @media (min-width: 1024px) {
-        .scroll-cue {
-            display: block;
-        }
-    }
-
-    .mouse {
-        display: block;
-        width: 26px;
-        height: 42px;
-        border: 2px solid currentColor;
-        border-radius: 14px;
-        opacity: 0.6;
-        position: relative;
-    }
-
-    .wheel {
-        position: absolute;
-        left: 50%;
-        top: 8px;
-        width: 4px;
-        height: 8px;
-        margin-left: -2px;
-        border-radius: 2px;
-        background: #00b1bb;
-        animation: wheel 1.6s ease-in-out infinite;
-    }
-
-    @keyframes wheel {
-        0% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        100% {
-            opacity: 0;
-            transform: translateY(14px);
-        }
-    }
-
-    /* Tech marquee */
-    .marquee {
-        overflow: hidden;
-        padding: 1.25rem 0;
-        border-block: 1px solid rgba(148, 163, 184, 0.25);
-        background: rgba(255, 255, 255, 0.35);
-        mask-image: linear-gradient(
-            90deg,
-            transparent,
-            #000 10%,
-            #000 90%,
-            transparent
-        );
-    }
-
-    :global(.dark) .marquee {
-        background: rgba(15, 23, 42, 0.3);
-    }
-
-    .marquee-track {
-        display: flex;
-        gap: 2.5rem;
-        width: max-content;
-        animation: marquee 45s linear infinite;
-    }
-
-    .marquee:hover .marquee-track {
-        animation-play-state: paused;
-    }
-
-    @keyframes marquee {
-        to {
-            transform: translateX(calc(-50% - 1.25rem));
-        }
-    }
-
-    .marquee-item {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        font-weight: 600;
-        white-space: nowrap;
-        color: var(--fg-muted);
-    }
-
-    /* Fixed box so tall logos (e.g. MongoDB) don't scale up via height: auto */
-    .marquee-item img {
-        width: 28px;
-        height: 28px;
-        object-fit: contain;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .marquee-track {
-            flex-wrap: wrap;
-            justify-content: center;
-            width: auto;
-        }
-
-        .marquee-item[aria-hidden="true"] {
-            display: none;
-        }
-    }
 </style>
-
-<script>
-    (() => {
-        const target = document.getElementById("typed-role");
-        if (
-            !target ||
-            window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ) {
-            return;
-        }
-
-        const roles: string[] = JSON.parse(target.dataset.roles ?? "[]");
-        if (!roles.length) return;
-
-        let roleIndex = 0;
-        let charIndex = roles[0].length;
-        let deleting = true;
-
-        const tick = () => {
-            const role = roles[roleIndex];
-            charIndex += deleting ? -1 : 1;
-            target.textContent = role.slice(0, charIndex);
-
-            let delay = deleting ? 45 : 90;
-            if (!deleting && charIndex === role.length) {
-                deleting = true;
-                delay = 2200;
-            } else if (deleting && charIndex === 0) {
-                deleting = false;
-                roleIndex = (roleIndex + 1) % roles.length;
-                delay = 350;
-            }
-            setTimeout(tick, delay);
-        };
-
-        setTimeout(tick, 2500);
-    })();
-</script>

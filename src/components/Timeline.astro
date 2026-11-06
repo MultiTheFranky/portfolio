@@ -94,18 +94,6 @@ const timelineEntries: TimelineEntry[] = [
         .timeline-title {
             opacity: 0;
             animation: title-reveal 0.8s ease-out 0.2s forwards;
-            background: linear-gradient(135deg, #64748b, #00b1bb, #64748b);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        :global(.dark) .timeline-title {
-            background: linear-gradient(135deg, #94a3b8, #00b1bb, #94a3b8);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
         }
 
         @keyframes title-reveal {
