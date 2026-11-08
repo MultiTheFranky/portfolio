@@ -14,6 +14,7 @@ concurrency:
 
 jobs:
     lint:
+        needs: format
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
@@ -25,6 +26,13 @@ jobs:
                   version: 12
             - run: pnpm install --no-frozen-lockfile
             - run: pnpm run lint
+            # Stop the rest of the run so no CI minutes go to a doomed build
+            - name: Cancel the run
+              if: failure()
+              run: gh run cancel ${{ github.run_id }} --repo ${{ github.repository }}
+              env:
+                  GH_TOKEN: ${{ github.token }}
+    # Cheapest check, runs first; everything else waits for it
     format:
         runs-on: ubuntu-latest
         steps:
@@ -37,7 +45,14 @@ jobs:
                   version: 12
             - run: pnpm install --no-frozen-lockfile
             - run: pnpm run format:check
+            # Stop the rest of the run so no CI minutes go to a doomed build
+            - name: Cancel the run
+              if: failure()
+              run: gh run cancel ${{ github.run_id }} --repo ${{ github.repository }}
+              env:
+                  GH_TOKEN: ${{ github.token }}
     build:
+        needs: format
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
@@ -56,13 +71,22 @@ jobs:
                   GITHUB_ACTIONS: ""
             - name: Build static output
               run: pnpm run build
+            # Stop the rest of the run so no CI minutes go to a doomed build
+            - name: Cancel the run
+              if: failure()
+              run: gh run cancel ${{ github.run_id }} --repo ${{ github.repository }}
+              env:
+                  GH_TOKEN: ${{ github.token }}
     test:
+        # The browser matrix is the most expensive part, so start it only
+        # after the quick checks pass
+        needs: [lint, typecheck]
         # Stay on 24.04: the WebKit tests hang on Ubuntu 26.04 (#569)
         runs-on: ubuntu-24.04
         # A hung browser otherwise holds the job for GitHub's 6-hour default
         timeout-minutes: 20
         strategy:
-            fail-fast: false
+            fail-fast: true
             matrix:
                 project:
                     [chromium, firefox, webkit, mobile-chrome, mobile-safari]
@@ -95,7 +119,14 @@ jobs:
                   path: playwright-report
                   retention-days: 7
                   if-no-files-found: warn
+            # Stop the rest of the run so no CI minutes go to a doomed build
+            - name: Cancel the run
+              if: failure()
+              run: gh run cancel ${{ github.run_id }} --repo ${{ github.repository }}
+              env:
+                  GH_TOKEN: ${{ github.token }}
     typecheck:
+        needs: format
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
@@ -107,6 +138,12 @@ jobs:
                   version: 12
             - run: pnpm install --no-frozen-lockfile
             - run: pnpm run typecheck
+            # Stop the rest of the run so no CI minutes go to a doomed build
+            - name: Cancel the run
+              if: failure()
+              run: gh run cancel ${{ github.run_id }} --repo ${{ github.repository }}
+              env:
+                  GH_TOKEN: ${{ github.token }}
     # Single stable check to mark as required in branch protection, so the
     # matrix can change without touching the repository settings
     ci-passed:
