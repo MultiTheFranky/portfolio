@@ -64,6 +64,6 @@
         "prettier-plugin-astro": "^1.0.0",
         "sharp": "^0.35.5",
         "typescript": "6.0.3",
-        "wrangler": "~4.159.0"
+        "wrangler": "~4.160.0"
     }
 }
