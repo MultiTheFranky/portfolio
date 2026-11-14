@@ -68,7 +68,7 @@ importers:
         version: 6.10.2(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
       eslint-plugin-prettier:
         specifier: 5.5.7
-        version: 5.5.7(eslint-config-prettier@10.1.8(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(prettier@3.10.0)
+        version: 5.5.7(eslint-config-prettier@10.1.8(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(prettier@3.10.1)
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
@@ -80,10 +80,10 @@ importers:
         version: 79.0.0(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
       prettier:
         specifier: ^3.6.2
-        version: 3.10.0
+        version: 3.10.1
       prettier-plugin-astro:
         specifier: ^1.0.0
-        version: 1.1.2(prettier@3.10.0)
+        version: 1.1.2(prettier@3.10.1)
       sharp:
         specifier: ^0.35.5
         version: 0.35.5(@types/node@25.0.2)
@@ -2785,8 +2785,8 @@ packages:
     peerDependencies:
       prettier: ^3.5.3
 
-  prettier@3.10.0:
-    resolution: {integrity: sha512-mBi4765LgjO1PFjlEs7pUeK0nb1bw71c+N4/ItfeUWNdY5cV2pRKaFpbbFRYmDJMO+5ZwzGxHRqHxFZna7iv5w==}
+  prettier@3.10.1:
+    resolution: {integrity: sha512-70vp3ZUYoPlFbF9uiTdXHUUCGEIp7d4+6p+8DYbkm2jP7x/3i/paXVF6dopSI3zd/CEitrZN1rc4i85xWmmXlg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -5348,10 +5348,10 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
-  eslint-plugin-prettier@5.5.7(eslint-config-prettier@10.1.8(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(prettier@3.10.0):
+  eslint-plugin-prettier@5.5.7(eslint-config-prettier@10.1.8(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2)))(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))(prettier@3.10.1):
     dependencies:
       eslint: 10.14.0(jiti@2.7.0)(supports-color@10.2.2)
-      prettier: 3.10.0
+      prettier: 3.10.1
       prettier-linter-helpers: 1.0.1
       synckit: 0.12.3
     optionalDependencies:
@@ -6339,14 +6339,14 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-astro@1.1.2(prettier@3.10.0):
+  prettier-plugin-astro@1.1.2(prettier@3.10.1):
     dependencies:
       '@astrojs/compiler-rs': 0.5.2
       '@prettier/parse-srcset': 3.1.0
-      prettier: 3.10.0
+      prettier: 3.10.1
       sass-formatter: 0.8.0
 
-  prettier@3.10.0: {}
+  prettier@3.10.1: {}
 
   prismjs@1.30.0: {}
 
