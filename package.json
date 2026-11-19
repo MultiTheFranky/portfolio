@@ -59,7 +59,7 @@
         "eslint-plugin-prettier": "5.5.7",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^7.0.0",
-        "eslint-plugin-unicorn": "^79.0.0",
+        "eslint-plugin-unicorn": "^80.0.0",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^1.0.0",
         "sharp": "^0.35.5",
